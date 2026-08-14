@@ -3,9 +3,13 @@ import { nodePath, type ResolvedPage } from "../config/routes";
 import { RouteLink } from "../components/common/RouteLink";
 import { BoardView } from "../components/page";
 import { ContentView, FaqView, FormView, LocationView, OrgView, SearchView, TimelineView } from "../components/page";
+import { FeaturedServiceView, getFeaturedServiceKind } from "../components/page/FeaturedServiceView";
 
 function PageBody({ page }: { page: ResolvedPage }) {
   const { leaf, top } = page;
+  const featuredKind = getFeaturedServiceKind(page.path);
+  if (featuredKind) return <FeaturedServiceView kind={featuredKind} />;
+
   switch (leaf.kind) {
     case "board": return <BoardView title={leaf.label} />;
     case "faq": return <FaqView />;
