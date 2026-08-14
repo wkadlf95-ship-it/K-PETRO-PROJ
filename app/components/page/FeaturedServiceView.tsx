@@ -160,8 +160,9 @@ function PricePage() {
             <h3>가격 추이 차트 영역</h3>
             <p>실제 구현 시 기간별 라인차트와 지역 비교 필터를 배치합니다.</p>
           </div>
-          <div className="mock-chart">
-            <i style={{ height: "42%" }} /><i style={{ height: "58%" }} /><i style={{ height: "50%" }} /><i style={{ height: "64%" }} /><i style={{ height: "47%" }} /><i style={{ height: "39%" }} />
+          {/* 막대 높이는 components.css 의 .mock-chart i:nth-child(n) 이 정한다 */}
+          <div className="mock-chart" aria-hidden="true">
+            <i /><i /><i /><i /><i /><i />
           </div>
         </article>
       </section>

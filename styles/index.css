@@ -1,9 +1,9 @@
+/* 로드 순서는 위에서 아래. 뒤에 오는 파일이 앞을 덮으므로 순서를 바꾸면 토큰이 무력화된다. */
 @import './fonts.css';
+@import './tokens.css';
 @import './base.css';
-@import './header.css';
-@import './hero.css';
-@import './home.css';
-@import './charts.css';
-@import './page.css';
-@import './footer.css';
-@import './chatbot.css';
+@import './layout.css';
+@import './components.css';
+@import './pages/home.css';
+@import './pages/institution.css';
+@import './pages/sitemap.css';
