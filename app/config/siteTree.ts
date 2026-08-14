@@ -1,6 +1,6 @@
 // 한국석유관리원 대표홈페이지 전체 메뉴 트리.
 // kind가 페이지 유형을 결정하고, PageRenderer가 유형별 화면을 그립니다.
-export type PageKind = "content" | "board" | "form" | "search" | "faq" | "timeline" | "org" | "location" | "external";
+export type PageKind = "content" | "board" | "form" | "search" | "faq" | "timeline" | "org" | "location" | "external" | "geo" | "calculator";
 
 export type MenuNode = {
   label: string;
@@ -296,35 +296,61 @@ export const siteTree: MenuNode[] = [
           { label: "유종별 가격", slug: "type", kind: "search" },
           { label: "지역별 가격", slug: "region", kind: "search" },
           { label: "가격 추이", slug: "trend", kind: "content" },
+          { label: "지역별 가격 지도", slug: "map", kind: "geo" },
+          { label: "관심 유종 알림", slug: "alert", kind: "form" },
+          { label: "내 차 월 주유비 계산기", slug: "calculator", kind: "calculator" },
+          { label: "AI 유가 예측 안내", slug: "ai", kind: "content" },
+          { label: "장거리 주유 플래너", slug: "planner", kind: "geo" },
         ],
       },
       {
         label: "품질정보", slug: "quality", children: [
-          { label: "품질검사 결과 공개", slug: "result", kind: "search" },
-          { label: "품질기준", slug: "standard", kind: "content" },
+          { label: "품질검사 결과 조회", slug: "result", kind: "search" },
+          { label: "연료 품질확인 서비스 신청", slug: "check", kind: "form" },
+          { label: "주유소 신뢰지수", slug: "trust", kind: "search" },
+          { label: "품질 기준 안내", slug: "standard", kind: "content" },
         ],
       },
       {
-        label: "유통통계", slug: "distribution", children: [
-          { label: "유종별 유통 통계", slug: "type", kind: "content" },
+        label: "유통·수급 통계", slug: "distribution", children: [
+          { label: "유종별 유통 현황", slug: "type", kind: "content" },
+          { label: "지역별 유통 현황", slug: "region", kind: "content" },
           { label: "원유수송 공개통계", slug: "crude", kind: "content" },
-          { label: "이상징후 요약", slug: "anomaly", kind: "content" },
+          { label: "수급 브리핑", slug: "supply", kind: "content" },
+          { label: "이상징후 요약 공개", slug: "anomaly", kind: "content" },
         ],
       },
       {
-        label: "신고/포상", slug: "report", children: [
-          { label: "신고안내·접수", slug: "guide", kind: "form" },
-          { label: "처리결과 조회", slug: "status", kind: "search" },
-          { label: "포상금 안내", slug: "reward", kind: "content" },
+        label: "신고·포상", slug: "report", children: [
+          { label: "신고/포상 안내", slug: "guide", kind: "form" },
+          { label: "신고 처리결과 조회", slug: "status", kind: "search" },
+          { label: "포상 기준 안내", slug: "reward", kind: "content" },
         ],
       },
       {
         label: "브리핑", slug: "briefing", children: [
-          { label: "오늘의 브리핑", slug: "today", kind: "board" },
+          { label: "오늘의 석유 브리핑", slug: "today", kind: "board" },
           { label: "동향 리포트", slug: "report", kind: "board" },
+          { label: "정책 알림", slug: "policy", kind: "board" },
+          { label: "통계 상세", slug: "stats", kind: "content" },
+        ],
+      },
+      {
+        label: "공공데이터", slug: "data", children: [
+          { label: "정보공개", slug: "disclosure", kind: "content" },
+          { label: "공공데이터 목록", slug: "catalog", kind: "search" },
+          { label: "Open API", slug: "api", kind: "content" },
+        ],
+      },
+      {
+        label: "이용지원", slug: "support", children: [
+          { label: "통합검색", slug: "search", kind: "search" },
+          { label: "챗봇", slug: "chatbot", kind: "content" },
+          { label: "뉴스레터 구독관리", slug: "newsletter", kind: "form" },
+          { label: "알림 수신설정", slug: "notifications", kind: "form" },
+          { label: "마이페이지", slug: "mypage", kind: "content" },
         ],
       },
     ],
   },
 ];
-

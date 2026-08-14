@@ -25,7 +25,7 @@ export function HeroSection() {
             <span className="hero-kicker"><ShieldCheck size={15} /> 석유정보 통합포털</span>
             <h1 id="hero-title">국민에게 공개되는 석유정보를<br />한 곳에서 확인합니다</h1>
             <p>
-              가격정보, 품질검사 결과, 유통통계, 원유수송 공개통계, 신고·포상 정보를<br className="desktop-break" />
+              가격정보, 품질검사 결과, 유통 현황, 원유수송 공개통계, 신고·포상 정보를<br className="desktop-break" />
               통합 제공하는 한국석유관리원 대국민포털입니다.
             </p>
             <div className="hero-actions">

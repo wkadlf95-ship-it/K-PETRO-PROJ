@@ -2,22 +2,16 @@ import type { ToneKey } from "./types";
 
 export const disclosureCards: { title: string; description: string; links: string[]; path: string }[] = [
   {
-    title: "정보공개·공공데이터",
-    description: "국민 누구나 활용할 수 있는 사전공표 정보와 개방 데이터를 제공합니다.",
-    links: ["사전정보 공표목록", "공공데이터 목록", "오픈API 이용안내"],
+    title: "정보공개",
+    description: "국민에게 공개 가능한 기관 정보와 석유 관련 공개 정보를 확인합니다.",
+    links: ["정보목록", "정보공개 안내", "정보공개청구"],
+    path: "/disclosure/open/list",
+  },
+  {
+    title: "공공데이터",
+    description: "대국민 서비스에 필요한 공개 데이터와 개방 항목을 조회합니다.",
+    links: ["공공데이터 목록", "Open API", "유가·품질 공개데이터"],
     path: "/disclosure/opendata/catalog",
-  },
-  {
-    title: "법정 공표·정보공개청구",
-    description: "법령에 따른 공표자료를 확인하고 필요한 정보를 온라인으로 청구합니다.",
-    links: ["법정 공표자료", "정보공개청구 신청", "청구 처리현황"],
-    path: "/disclosure/open/list",
-  },
-  {
-    title: "경영공시·감사정보",
-    description: "기관 경영 현황과 감사 결과를 투명하게 공개합니다.",
-    links: ["경영공시 자료", "내부감사 결과", "청렴·윤리 활동"],
-    path: "/disclosure/open/list",
   },
 ];
 
@@ -50,7 +44,7 @@ export const personalizationItems: { title: string; description: string; action:
 export const footerSitemapColumns: { title: string; path: string; links: string[] }[] = [
   { title: "기관소개", path: "/about/ceo/greeting", links: ["기관 소개", "주요업무", "ESG경영"] },
   { title: "공개정보", path: "/disclosure/open/list", links: ["정보공개", "법정 공표", "공공데이터 개방"] },
-  { title: "석유정보", path: "/oil/price/type", links: ["가격정보", "품질정보", "유통통계"] },
+  { title: "석유정보", path: "/oil/price/type", links: ["가격정보", "품질정보", "유통 현황"] },
   { title: "고객서비스", path: "/service/report/guide", links: ["민원·신고", "자료실", "사업자 지원"] },
 ];
 

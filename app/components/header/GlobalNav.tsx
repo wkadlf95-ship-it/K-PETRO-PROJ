@@ -1,5 +1,4 @@
-import { nodePath } from "../../config/routes";
-import { siteTree } from "../../config/siteTree";
+import { publicNavItems } from "../../config/publicNav";
 import { RouteLink } from "../common/RouteLink";
 
 type GlobalNavProps = {
@@ -9,29 +8,38 @@ type GlobalNavProps = {
 };
 
 export function GlobalNav({ activeTop, openMenu, onOpenChange }: GlobalNavProps) {
+  const currentPath = window.location.hash.replace(/^#/, "") || "/";
+
   return (
-    <nav className="global-nav" aria-label="주요 메뉴">
-      {siteTree.map((top) => (
-        <div className="global-nav-item" key={top.slug} onMouseLeave={() => onOpenChange(null)}>
-          <button
-            type="button"
-            className={activeTop === top.slug ? "is-active" : ""}
-            onMouseEnter={() => onOpenChange(top.slug)}
-            onClick={() => onOpenChange(openMenu === top.slug ? null : top.slug)}
-            aria-expanded={openMenu === top.slug}
-          >
-            {top.label}
-          </button>
-          {openMenu === top.slug && top.children && (
-            <div className="nav-dropdown">
-              <strong>{top.label}</strong>
-              {top.children.map((mid) => (
-                <RouteLink key={mid.slug} to={nodePath(top, mid)}>{mid.label}</RouteLink>
-              ))}
-            </div>
-          )}
-        </div>
-      ))}
+    <nav className="global-nav" aria-label="주요 서비스 메뉴">
+      {publicNavItems.map((item) => {
+        const itemTop = item.path.split("/")[1];
+        const itemKey = item.label;
+        const isActive = currentPath.startsWith(item.path) || item.children?.some((child) => currentPath.startsWith(child.path));
+
+        return (
+          <div className="global-nav-item" key={item.label} onMouseLeave={() => onOpenChange(null)}>
+            <button
+              type="button"
+              className={isActive || activeTop === itemTop && itemTop !== "oil" ? "is-active" : ""}
+              onMouseEnter={() => onOpenChange(itemKey)}
+              onClick={() => onOpenChange(openMenu === itemKey ? null : itemKey)}
+              aria-expanded={openMenu === itemKey}
+            >
+              {item.label}
+            </button>
+            {openMenu === itemKey && item.children && (
+              <div className="nav-dropdown">
+                <strong>{item.label}</strong>
+                <p>{item.desc}</p>
+                {item.children.map((child) => (
+                  <RouteLink key={child.path} to={child.path}>{child.label}</RouteLink>
+                ))}
+              </div>
+            )}
+          </div>
+        );
+      })}
     </nav>
   );
 }

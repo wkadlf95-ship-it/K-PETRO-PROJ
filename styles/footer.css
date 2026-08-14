@@ -16,7 +16,8 @@
 
 .footer-body { display: flex; justify-content: space-between; gap: 30px; padding-top: 27px; padding-bottom: 32px; }
 .site-footer .brand-copy strong { color: #fff; }
-.site-footer .brand-mark i:nth-child(1) { background: #d8ddd5; }
+.site-footer .brand-copy small { color: rgba(255,255,255,.66); }
+.site-footer .brand-mark-dark { fill: #d8ddd5; }
 .footer-body p { margin: 11px 0 0; font-size: 10px; line-height: 1.5; }
 .footer-body p + p { margin-top: 4px; }
 .footer-body small { display: block; margin-top: 13px; color: rgba(255,255,255,.35); font-family: Inter, sans-serif; font-size: 9px; }

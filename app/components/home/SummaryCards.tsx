@@ -5,7 +5,7 @@ import { RouteLink } from "../common/RouteLink";
 const cardIcons: Record<string, LucideIcon> = {
   가격정보: Fuel,
   품질정보: ChartPie,
-  유통통계: ChartPie,
+  유통현황: ChartPie,
   "신고/포상": Siren,
 };
 

@@ -39,8 +39,8 @@ export const summaryCards: SummaryCard[] = [
     tone: "blue",
   },
   {
-    title: "유통통계",
-    description: "유종별·지역별 석유 유통 통계 제공",
+    title: "유통현황",
+    description: "유종별·지역별 석유 유통 흐름 제공",
     value: "8,420천 kL",
     subValue: "월간 유통량",
     metrics: [
@@ -78,13 +78,12 @@ export type QuickService = {
 };
 
 export const quickServices: QuickService[] = [
-  { title: "정보공개·공공데이터 안내", description: "공개 대상 정보와 개방 데이터 이용방법", path: "/disclosure/open/list", icon: "disclosure", tone: "mint" },
+  { title: "정보공개·공공데이터", description: "공개 정보와 개방 데이터 조회", path: "/disclosure/opendata/catalog", icon: "disclosure", tone: "mint" },
   { title: "동향·정책 리포트", description: "석유시장 동향과 정책 변화 리포트", path: "/oil/briefing/today", icon: "report", tone: "lavender" },
-  { title: "법정 공표·정보공개청구", description: "법정 공표자료 확인 및 온라인 청구", path: "/disclosure/open/list", icon: "law", tone: "blue" },
   { title: "가격 조회", description: "유종별·기간별 평균 가격 조회", path: "/oil/price/type", icon: "price", tone: "yellow" },
   { title: "가격 지도", description: "지도에서 지역별 가격 수준 비교", path: "/oil/price/type", icon: "map", tone: "mint" },
   { title: "품질검사 결과 공개", description: "공개 가능한 검사 결과와 품질기준", path: "/oil/quality/result", icon: "quality", tone: "blue" },
-  { title: "석유 유통 통계 인포그래픽", description: "유종·지역별 통계를 시각자료로 제공", path: "/oil/distribution/type", icon: "stats", tone: "stone" },
+  { title: "석유 유통 현황", description: "유종·지역별 통계를 차트로 확인", path: "/oil/distribution/type", icon: "stats", tone: "stone" },
   { title: "신고안내·접수", description: "가짜석유·정량미달 등 불법행위 신고", path: "/oil/report/guide", icon: "siren", tone: "coral" },
 ];
 

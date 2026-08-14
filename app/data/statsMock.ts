@@ -1,7 +1,15 @@
 export type ChartSeries = { name: string; color: string; values: number[] };
 
-export const priceTrend: { updatedAt: string; labels: string[]; series: ChartSeries[] } = {
+export type PriceTrendData = {
+  updatedAt: string;
+  unit: string;
+  labels: string[];
+  series: ChartSeries[];
+};
+
+export const priceTrend: PriceTrendData = {
   updatedAt: "2026.08.14 기준",
+  unit: "원/L",
   labels: ["8/10", "8/11", "8/12", "8/13", "8/14"],
   series: [
     { name: "휘발유", color: "var(--chart-1)", values: [1685, 1692, 1688, 1679, 1685] },

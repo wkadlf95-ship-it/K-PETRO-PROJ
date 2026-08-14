@@ -93,7 +93,7 @@ export function PublicStatsSection() {
         <div className="section-heading">
           <div>
             <span>OPEN STATISTICS</span>
-            <h2 id="public-stats-title">공개 가능한 석유정보 통계</h2>
+            <h2 id="public-stats-title">공개 석유통계</h2>
           </div>
           <p>집계 통계 중심으로 제공하며, 비공개 대상 정보는 포함하지 않습니다.</p>
         </div>
@@ -101,18 +101,18 @@ export function PublicStatsSection() {
         <div className="stats-grid">
           <StatsCard
             wide
-            title="가격 추이 요약"
-            note="최근 5일 유종별 전국 평균 판매가격"
+            title="가격 추이"
+            note="수신 데이터 기준 최근 5일 전국 평균 판매가격"
             badge={priceTrend.updatedAt}
             more={{ label: "가격정보 자세히 보기", path: "/oil/price/type" }}
           >
-            <PriceTrendChart />
+            <PriceTrendChart data={priceTrend} />
           </StatsCard>
 
           <StatsCard
-            title="유통량 통계 요약"
-            note="유종별 월간 유통 비중"
-            more={{ label: "유통통계 보기", path: "/oil/distribution/type" }}
+            title="유통 현황"
+            note="유종별 월간 유통 비중을 차트로 제공"
+            more={{ label: "유통 현황 보기", path: "/oil/distribution/type" }}
           >
             <DistributionDonut />
           </StatsCard>

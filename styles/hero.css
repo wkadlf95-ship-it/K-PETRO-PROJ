@@ -12,20 +12,20 @@
 .hero-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 26px; }
 
 /* 배너 슬라이드 */
-.hero-banner { display: flex; flex-direction: column; padding: 20px; border: 1px solid rgba(255,255,255,.18); border-radius: 18px; background: rgba(16,26,22,.74); color: #fff; box-shadow: 0 20px 48px rgba(12,20,16,.36); backdrop-filter: blur(16px); }
+.hero-banner { display: flex; min-height: 292px; flex-direction: column; padding: 20px; border: 1px solid rgba(255,255,255,.18); border-radius: 18px; background: rgba(16,26,22,.74); color: #fff; box-shadow: 0 20px 48px rgba(12,20,16,.36); backdrop-filter: blur(16px); }
 .hero-banner-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,.16); }
 .hero-banner-head > span { display: inline-flex; align-items: center; gap: 6px; color: #ddeb9b; font-size: 11px; font-weight: 700; }
 .hero-banner-head > strong { color: rgba(255,255,255,.55); font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .04em; }
 .hero-banner-head em { color: #fff; font-style: normal; font-weight: 700; }
-.hero-banner-viewport { overflow: hidden; margin: 0 -4px; padding: 0 4px; }
+.hero-banner-viewport { overflow: hidden; flex: 1; margin: 0 -4px; padding: 0 4px; }
 .hero-banner-track { display: flex; transition: transform .55s cubic-bezier(.4,0,.2,1); }
-.hero-banner-slide { display: flex; flex: 0 0 100%; min-width: 0; flex-direction: column; padding-top: 18px; }
+.hero-banner-slide { display: flex; flex: 0 0 100%; min-width: 0; min-height: 156px; flex-direction: column; padding-top: 18px; }
 .hero-banner-category { align-self: flex-start; padding: 5px 10px; border-radius: 999px; background: rgba(191,214,59,.2); color: #dcea96; font-size: 10px; font-weight: 700; }
-.hero-banner-slide h3 { display: -webkit-box; overflow: hidden; margin: 12px 0 0; font-size: 17px; line-height: 1.45; letter-spacing: -.035em; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.hero-banner-slide h3 { display: -webkit-box; overflow: hidden; min-height: 50px; margin: 12px 0 0; font-size: 17px; line-height: 1.45; letter-spacing: -.035em; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
 .hero-banner-slide p { display: -webkit-box; overflow: hidden; min-height: 38px; margin: 9px 0 0; color: rgba(255,255,255,.7); font-size: 11.5px; line-height: 1.65; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
-.hero-banner-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; }
+.hero-banner-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 16px; }
 .hero-banner-foot time { color: rgba(255,255,255,.5); font-family: Inter, sans-serif; font-size: 10px; }
-.hero-banner-foot a { display: inline-flex; align-items: center; gap: 5px; padding: 8px 12px; border: 1px solid rgba(255,255,255,.26); border-radius: 9px; background: rgba(255,255,255,.1); font-size: 11px; font-weight: 700; }
+.hero-banner-foot a { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 5px; padding: 8px 12px; border: 1px solid rgba(255,255,255,.26); border-radius: 9px; background: rgba(255,255,255,.1); font-size: 11px; font-weight: 700; white-space: nowrap; }
 .hero-banner-foot a:hover { border-color: rgba(191,214,59,.6); background: rgba(191,214,59,.18); }
 .hero-banner-controls { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,.16); }
 .hero-banner-dots { display: flex; align-items: center; gap: 6px; }

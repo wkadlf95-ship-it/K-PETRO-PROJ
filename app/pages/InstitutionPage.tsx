@@ -2,7 +2,7 @@ import { ChevronRight, ExternalLink, Home, Printer, Share2 } from "lucide-react"
 import { nodePath, type ResolvedPage } from "../config/routes";
 import { RouteLink } from "../components/common/RouteLink";
 import { BoardView } from "../components/page";
-import { ContentView, FaqView, FormView, LocationView, OrgView, SearchView, TimelineView } from "../components/page";
+import { CalculatorView, ContentView, FaqView, FormView, GeoDataView, LocationView, OrgView, SearchView, TimelineView } from "../components/page";
 import { FeaturedServiceView, getFeaturedServiceKind } from "../components/page/FeaturedServiceView";
 
 function PageBody({ page }: { page: ResolvedPage }) {
@@ -15,6 +15,8 @@ function PageBody({ page }: { page: ResolvedPage }) {
     case "faq": return <FaqView />;
     case "search": return <SearchView title={leaf.label} />;
     case "form": return <FormView title={leaf.label} />;
+    case "geo": return <GeoDataView slug={leaf.slug} title={leaf.label} />;
+    case "calculator": return <CalculatorView title={leaf.label} />;
     case "timeline": return <TimelineView />;
     case "org": return <OrgView />;
     case "location": return <LocationView slug={leaf.slug} />;

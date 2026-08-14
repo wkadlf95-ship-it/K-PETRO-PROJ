@@ -1,7 +1,9 @@
 export { BoardView } from "./BoardView";
+export { CalculatorView } from "./CalculatorView";
 export { ContentView } from "./ContentView";
 export { FaqView } from "./FaqView";
 export { FormView } from "./FormView";
+export { GeoDataView } from "./GeoDataView";
 export { LocationView } from "./LocationView";
 export { OrgView } from "./OrgView";
 export { SearchView } from "./SearchView";
