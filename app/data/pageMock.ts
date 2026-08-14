@@ -98,30 +98,39 @@ export function buildInspectionRows(total = 8): InspectionRow[] {
   }));
 }
 
-// 지도 API 연동 전, 지도형 화면(가격지도·주유플래너·재난정보)에 쓰는 핀 자리표시 데이터입니다.
-export type MapPin = { label: string; note?: string };
-export type MapPreset = { caption: string; pins: MapPin[]; legend?: { label: string; tone: "low" | "mid" | "high" }[] };
+// 지도 형식 대신 데이터 테이블/목록형으로 제공하는 화면(가격지도·주유플래너·재난정보) 데이터입니다.
+export type GeoDataPreset = { caption: string; columns: string[]; rows: string[][] };
 
-export const mapPresets: Record<string, MapPreset> = {
+export const geoDataPresets: Record<string, GeoDataPreset> = {
   map: {
-    caption: "오피넷 Open API·GIS 데이터 연계 지도 화면 (시안)",
-    pins: [
-      { label: "수도권", note: "1,672원" }, { label: "강원권", note: "1,701원" }, { label: "충청권", note: "1,658원" },
-      { label: "전라권", note: "1,649원" }, { label: "경상권", note: "1,684원" }, { label: "제주권", note: "1,712원" },
+    caption: "오피넷 Open API 연계 지역별 가격 현황 (시안)",
+    columns: ["지역", "유종", "평균가격", "전일 대비", "품질검사 연계"],
+    rows: [
+      ["수도권", "휘발유", "1,672원/L", "-2원", "연계"],
+      ["강원권", "휘발유", "1,701원/L", "+1원", "연계"],
+      ["충청권", "휘발유", "1,658원/L", "-1원", "연계"],
+      ["전라권", "휘발유", "1,649원/L", "0원", "연계"],
+      ["경상권", "휘발유", "1,684원/L", "-3원", "연계"],
+      ["제주권", "휘발유", "1,712원/L", "+2원", "미연계"],
     ],
-    legend: [{ label: "저가 지역", tone: "low" }, { label: "평균 지역", tone: "mid" }, { label: "고가 지역", tone: "high" }],
   },
   planner: {
-    caption: "경로 기반 저가 주유소 안내 지도 화면 (시안)",
-    pins: [{ label: "출발지" }, { label: "경유 주유소" }, { label: "경유 주유소" }, { label: "목적지" }],
+    caption: "경로 주변 저가 주유소 후보 목록 (시안)",
+    columns: ["구간", "주유소명", "유종", "가격", "비고"],
+    rows: [
+      ["출발지 인근", "○○알뜰주유소", "휘발유", "1,598원/L", "경로 0.5km 이내"],
+      ["경유지 1", "△△셀프주유소", "휘발유", "1,612원/L", "경로 2.1km 이내"],
+      ["경유지 2", "□□에너지", "휘발유", "1,619원/L", "경로 3.4km 이내"],
+      ["목적지 인근", "◇◇주유소", "휘발유", "1,625원/L", "경로 0.8km 이내"],
+    ],
   },
   disaster: {
-    caption: "재난정보 연계기관 API 기반 위치 지도 화면 (시안)",
-    pins: [{ label: "재난상황 A" }, { label: "재난상황 B" }, { label: "재난상황 C" }],
+    caption: "재난상황 목록 (시안, 유관기관·관리자 전용)",
+    columns: ["지역", "유형", "발생일시", "상태"],
+    rows: [
+      ["충남 서산시", "유류 저장시설 누출 의심", "2026.08.13 09:20", "확인 중"],
+      ["경기 평택시", "수급 차질 가능성", "2026.08.12 17:40", "모니터링"],
+      ["전남 여수시", "물류 지연", "2026.08.11 08:05", "해소"],
+    ],
   },
 };
-
-export const MAP_PIN_POSITIONS = [
-  { top: "22%", left: "28%" }, { top: "44%", left: "56%" }, { top: "64%", left: "20%" },
-  { top: "34%", left: "74%" }, { top: "72%", left: "48%" }, { top: "16%", left: "58%" },
-];

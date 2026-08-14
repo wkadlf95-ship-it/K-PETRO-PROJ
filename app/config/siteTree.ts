@@ -1,6 +1,6 @@
 // 한국석유관리원 대표홈페이지 전체 메뉴 트리.
 // kind가 페이지 유형을 결정하고, PageRenderer가 유형별 화면을 그립니다.
-export type PageKind = "content" | "board" | "form" | "search" | "faq" | "timeline" | "org" | "location" | "external" | "map" | "calculator";
+export type PageKind = "content" | "board" | "form" | "search" | "faq" | "timeline" | "org" | "location" | "external" | "geo" | "calculator";
 
 export type MenuNode = {
   label: string;
@@ -312,7 +312,7 @@ export const siteTree: MenuNode[] = [
           { label: "유종별 가격", slug: "type", kind: "search" },
           { label: "지역별 가격", slug: "region", kind: "search" },
           { label: "가격 추이", slug: "trend", kind: "content" },
-          { label: "가격지도·통합지도", slug: "map", kind: "map", status: "협의중·필수" },
+          { label: "가격지도·통합지도", slug: "map", kind: "geo", status: "협의중·필수" },
         ],
       },
       {
@@ -346,13 +346,13 @@ export const siteTree: MenuNode[] = [
         label: "이용활성화", slug: "tools", children: [
           { label: "내 차 월 주유비 계산기", slug: "calculator", kind: "calculator", status: "미정·후순위" },
           { label: "AI 유가예측 안내", slug: "forecast", kind: "content", status: "미정·후순위" },
-          { label: "장거리 주유 플래너", slug: "planner", kind: "map", status: "미정·후순위" },
+          { label: "장거리 주유 플래너", slug: "planner", kind: "geo", status: "미정·후순위" },
         ],
       },
       {
         label: "유관기관·안전", slug: "partner", children: [
           { label: "유관기관 정보제공", slug: "info", kind: "content", status: "미정·검토" },
-          { label: "재난상황 위치정보", slug: "disaster", kind: "map", status: "미정·후순위" },
+          { label: "재난상황 위치정보", slug: "disaster", kind: "geo", status: "미정·후순위" },
         ],
       },
     ],

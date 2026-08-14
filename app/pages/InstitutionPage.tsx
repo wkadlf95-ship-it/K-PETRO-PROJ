@@ -3,7 +3,7 @@ import { nodePath, type ResolvedPage } from "../config/routes";
 import { RouteLink } from "../components/common/RouteLink";
 import { StatusBadge } from "../components/common/StatusBadge";
 import { BoardView } from "../components/page";
-import { CalculatorView, ContentView, FaqView, FormView, LocationView, MapView, OrgView, SearchView, TimelineView } from "../components/page";
+import { CalculatorView, ContentView, FaqView, FormView, GeoDataView, LocationView, OrgView, SearchView, TimelineView } from "../components/page";
 import { FeaturedServiceView, getFeaturedServiceKind } from "../components/page/FeaturedServiceView";
 
 function PageBody({ page }: { page: ResolvedPage }) {
@@ -19,7 +19,7 @@ function PageBody({ page }: { page: ResolvedPage }) {
     case "timeline": return <TimelineView />;
     case "org": return <OrgView />;
     case "location": return <LocationView slug={leaf.slug} />;
-    case "map": return <MapView slug={leaf.slug} title={leaf.label} />;
+    case "geo": return <GeoDataView slug={leaf.slug} title={leaf.label} />;
     case "calculator": return <CalculatorView title={leaf.label} />;
     default: return <ContentView title={leaf.label} desc={top.desc ?? ""} />;
   }

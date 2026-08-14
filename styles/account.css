@@ -1,5 +1,6 @@
-/* 이번에 신규 이식한 화면 전용: 로그인/회원가입, 마이페이지, 지도형 화면,
-   계산기, 신규 제안 상태배지. siteTree 기존 콘텐츠와는 분리해 관리합니다. */
+/* 이번에 신규 이식한 화면 전용: 로그인/회원가입, 마이페이지, 지도 대신 쓰는
+   데이터 테이블형 화면, 계산기, 신규 제안 상태배지. siteTree 기존 콘텐츠와는
+   분리해 관리합니다. */
 
 /* 상태배지 — 요구사항 관리대장 기준 신규 제안 화면 표시 */
 .status-badge { display: inline-flex; flex: 0 0 auto; align-items: center; padding: 4px 10px; border-radius: 999px; font-size: 9.5px; font-weight: 700; letter-spacing: .02em; }
@@ -47,36 +48,9 @@
 .mypage-settings p { margin: 0; color: var(--muted); font-size: 10px; }
 .mypage-settings button { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 6px; padding: 9px 14px; border: 1px solid var(--line); border-radius: 9px; background: #fff; color: #4c524a; font-size: 10px; font-weight: 700; }
 
-/* 지도형 화면 (지도 API 연동 전 자리 표시) */
-.map-view { padding-top: 22px; }
-.map-view-frame { position: relative; padding: 14px; border: 1px solid var(--line); border-radius: 17px; background: #fff; }
-.map-view-canvas {
-  position: relative; height: 320px; overflow: hidden; border-radius: 13px;
-  background:
-    repeating-linear-gradient(100deg, rgba(255,255,255,.55) 0 2px, transparent 2px 64px),
-    repeating-linear-gradient(10deg, rgba(255,255,255,.4) 0 2px, transparent 2px 90px),
-    linear-gradient(160deg, #dfe9d8 0%, #e9efe0 46%, #d8e6ec 100%);
-}
-.map-view-canvas::before {
-  position: absolute; top: 14%; left: 8%; width: 34%; height: 30%; content: "";
-  background: rgba(148, 186, 214, .45); border-radius: 46% 54% 60% 40% / 50% 45% 55% 50%;
-}
-.map-view-canvas::after {
-  position: absolute; right: 10%; bottom: 12%; width: 26%; height: 22%; content: "";
-  background: rgba(150, 196, 150, .4); border-radius: 55% 45% 48% 52% / 46% 54% 46% 54%;
-}
-.map-view-pin { position: absolute; z-index: 1; display: flex; flex-direction: column; align-items: center; transform: translate(-50%, -100%); color: #b8503f; filter: drop-shadow(0 3px 5px rgba(30,40,25,.25)); }
-.map-view-pin em { margin-top: 3px; padding: 3px 8px; border-radius: 999px; background: #fff; color: #3a3f38; font-size: 9px; font-style: normal; font-weight: 700; white-space: nowrap; box-shadow: 0 4px 10px rgba(30,40,25,.14); }
-.map-view-controls { position: absolute; top: 14px; right: 14px; z-index: 1; display: grid; overflow: hidden; border-radius: 9px; background: #fff; box-shadow: 0 6px 16px rgba(30,40,25,.16); }
-.map-view-controls button { display: block; width: 30px; height: 30px; border: 0; border-bottom: 1px solid var(--line); background: transparent; color: #4c524a; font-size: 15px; }
-.map-view-controls button:last-child { border-bottom: 0; }
-.map-view-badge { position: absolute; right: 12px; bottom: 10px; z-index: 1; padding: 4px 9px; border-radius: 999px; background: rgba(255,255,255,.85); color: #5c6156; font-size: 8.5px; font-weight: 700; }
-.map-view-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
-.map-view-legend span { display: inline-flex; align-items: center; gap: 6px; color: #5c6156; font-size: 10px; }
-.map-view-legend i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; }
-.map-view-legend i.tone-low { background: #63a94e; }
-.map-view-legend i.tone-mid { background: #c9a52a; }
-.map-view-legend i.tone-high { background: #d16a58; }
+/* 지도형 화면 → 데이터 테이블/목록형으로 변경 (표는 page.css의 .data-table 공용 스타일 재사용) */
+.geo-data-view { padding-top: 22px; }
+.geo-data-view .content-note { margin-top: 18px; }
 
 /* 계산기 */
 .calculator-view { padding-top: 22px; }
@@ -91,13 +65,9 @@
 @media (max-width: 900px) {
   .mypage-widgets { grid-template-columns: 1fr; }
   .calculator-form { grid-template-columns: 1fr; }
-  .map-view-canvas { height: 260px; }
 }
 
 @media (max-width: 640px) {
   .auth-card { padding: 26px 20px; border-radius: 18px; }
   .mypage-settings article { flex-direction: column; align-items: flex-start; }
-  .map-view-canvas { height: 220px; }
-  .map-view-pin em { font-size: 8px; padding: 2px 6px; }
-  .map-view-legend { flex-direction: column; gap: 8px; }
 }
