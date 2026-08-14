@@ -99,7 +99,7 @@ for (const file of cssFiles) {
 }
 
 /* 7. 로드 순서 (뒤 파일이 앞을 덮으므로 순서가 규약이다) */
-const EXPECTED = ['fonts.css', 'tokens.css', 'base.css', 'layout.css', 'components.css', 'pages/home.css', 'pages/institution.css', 'pages/sitemap.css'];
+const EXPECTED = ['fonts.css', 'tokens.css', 'base.css', 'layout.css', 'components.css', 'portlet.css', 'pages/home.css', 'pages/institution.css', 'pages/sitemap.css'];
 const imported = [...readFileSync(join(STYLES, 'index.css'), 'utf8').matchAll(/@import\s+'\.\/([^']+)'/g)].map((m) => m[1]);
 if (imported.join(',') !== EXPECTED.join(',')) {
   fail(join(STYLES, 'index.css'), `로드 순서가 규약과 다름\n    기대: ${EXPECTED.join(' → ')}\n    실제: ${imported.join(' → ')}`);

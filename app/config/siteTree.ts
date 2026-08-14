@@ -1,6 +1,6 @@
 // 한국석유관리원 대표홈페이지 전체 메뉴 트리.
 // kind가 페이지 유형을 결정하고, PageRenderer가 유형별 화면을 그립니다.
-export type PageKind = "content" | "board" | "form" | "search" | "faq" | "timeline" | "org" | "location" | "external" | "geo" | "calculator";
+export type PageKind = "content" | "board" | "form" | "search" | "faq" | "timeline" | "org" | "location" | "external" | "geo" | "calculator" | "portlet";
 
 export type MenuNode = {
   label: string;
@@ -292,10 +292,11 @@ export const siteTree: MenuNode[] = [
     desc: "국민에게 공개되는 가격·품질·유통·공공데이터를 통합 제공합니다.",
     children: [
       {
+        // 가격 화면은 포틀릿이다. 사용자가 위젯을 끌어 옮기고 배치가 저장된다.
         label: "가격정보", slug: "price", children: [
-          { label: "유종별 가격", slug: "type", kind: "search" },
-          { label: "지역별 가격", slug: "region", kind: "search" },
-          { label: "가격 추이", slug: "trend", kind: "content" },
+          { label: "유종별 가격", slug: "type", kind: "portlet" },
+          { label: "지역별 가격", slug: "region", kind: "portlet" },
+          { label: "가격 추이", slug: "trend", kind: "portlet" },
           { label: "지역별 가격 지도", slug: "map", kind: "geo" },
           { label: "관심 유종 알림", slug: "alert", kind: "form" },
           { label: "내 차 월 주유비 계산기", slug: "calculator", kind: "calculator" },

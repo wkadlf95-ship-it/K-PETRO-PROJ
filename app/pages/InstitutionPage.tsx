@@ -4,6 +4,7 @@ import { RouteLink } from "../components/common/RouteLink";
 import { BoardView } from "../components/page";
 import { CalculatorView, ContentView, FaqView, FormView, GeoDataView, LocationView, OrgView, SearchView, TimelineView } from "../components/page";
 import { FeaturedServiceView, getFeaturedServiceKind } from "../components/page/FeaturedServiceView";
+import { PricePortletPage } from "../portlet/PricePortletPage";
 
 function PageBody({ page }: { page: ResolvedPage }) {
   const { leaf, top } = page;
@@ -17,6 +18,8 @@ function PageBody({ page }: { page: ResolvedPage }) {
     case "form": return <FormView title={leaf.label} />;
     case "geo": return <GeoDataView slug={leaf.slug} title={leaf.label} />;
     case "calculator": return <CalculatorView title={leaf.label} />;
+    // 포틀릿 화면은 배치를 경로별로 저장한다
+    case "portlet": return <PricePortletPage pageKey={page.path} />;
     case "timeline": return <TimelineView />;
     case "org": return <OrgView />;
     case "location": return <LocationView slug={leaf.slug} />;

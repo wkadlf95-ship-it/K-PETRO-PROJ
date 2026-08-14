@@ -283,7 +283,7 @@ function BriefingPage() {
 }
 
 export function getFeaturedServiceKind(path: string): FeaturedKind | null {
-  if (path === "/oil/price/type") return "price";
+  // 가격 화면은 포틀릿(PricePortletPage)이 담당하므로 여기서 가로채지 않는다
   if (path === "/oil/quality/result") return "quality";
   if (path === "/oil/report/guide") return "report";
   if (path === "/oil/briefing/today") return "briefing";
