@@ -1,4 +1,4 @@
-import { Building2, Bus, MapPin, Phone, Train } from "lucide-react";
+import { Building2, Bus, MapPin, Phone, Train } from "../../icons";
 import { locations } from "../../data/pageMock";
 
 export function LocationView({ slug }: { slug: string }) {

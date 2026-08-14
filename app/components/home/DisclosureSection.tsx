@@ -1,4 +1,4 @@
-import { ArrowRight, ChevronRight, Landmark } from "lucide-react";
+import { ArrowRight, ChevronRight, Landmark } from "../../icons";
 import { disclosureCards } from "../../data/sectionMock";
 import { RouteLink } from "../common/RouteLink";
 

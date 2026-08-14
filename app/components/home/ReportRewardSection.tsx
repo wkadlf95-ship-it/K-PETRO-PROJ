@@ -1,8 +1,8 @@
-import { ArrowRight, Award, FlaskConical, Search, ShieldCheck, Siren, type LucideIcon } from "lucide-react";
+import { ArrowRight, Award, FlaskConical, Search, ShieldCheck, Siren, type IconComponent } from "../../icons";
 import { reportServices } from "../../data/sectionMock";
 import { RouteLink } from "../common/RouteLink";
 
-const icons: Record<string, LucideIcon> = {
+const icons: Record<string, IconComponent> = {
   siren: Siren,
   search: Search,
   award: Award,

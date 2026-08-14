@@ -2,8 +2,40 @@
 
 .hero { padding: 24px 0 0; background: var(--bg); }
 .hero__card { position: relative; min-height: 470px; overflow: hidden; border-radius: 28px; background: var(--dg-dark); box-shadow: var(--shadow); }
-.hero__background { position: absolute; inset: 0; background-position: center 52%; background-size: cover; opacity: 0; transform: scale(1.015); transition: opacity .9s ease; }
+/* ── Hero 배경 무늬 ──
+   사진을 쓰지 않는다. 외부 이미지 호출이 없고, 사진 속 인물·상표·건물에 대한
+   권리 문제도 생기지 않는다. 무늬는 슬라이드 주제에 맞춰 4종을 둔다. */
+.hero__background { position: absolute; inset: 0; opacity: 0; transition: opacity var(--motion-slow) ease; }
 .hero__background.is-active { opacity: 1; }
+
+/* 품질검사 — 격자 무늬(측정·검사) */
+.hero__bg--quality {
+  background:
+    repeating-linear-gradient(0deg, var(--on-dark-bd4) 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(90deg, var(--on-dark-bd4) 0 1px, transparent 1px 34px),
+    radial-gradient(120% 90% at 78% 18%, var(--dg) 0%, var(--dg-dark) 55%, var(--overlay-ink) 100%);
+}
+
+/* 공공데이터 — 사선 무늬(데이터 흐름) */
+.hero__bg--data {
+  background:
+    repeating-linear-gradient(58deg, var(--on-dark-bd4) 0 2px, transparent 2px 22px),
+    radial-gradient(115% 95% at 82% 22%, var(--dg) 0%, var(--dg-dark) 52%, var(--overlay-ink) 100%);
+}
+
+/* 브리핑 — 동심원(발신·전파) */
+.hero__bg--briefing {
+  background:
+    repeating-radial-gradient(circle at 80% 24%, var(--on-dark-bd4) 0 1px, transparent 1px 46px),
+    radial-gradient(120% 95% at 76% 20%, var(--dg) 0%, var(--dg-dark) 58%, var(--overlay-ink) 100%);
+}
+
+/* 신고·포상 — 굵은 사선 띠(주의 표지) */
+.hero__bg--report {
+  background:
+    repeating-linear-gradient(-45deg, var(--on-dark-fill2) 0 14px, transparent 14px 40px),
+    radial-gradient(120% 95% at 80% 20%, var(--dg) 0%, var(--dg-dark) 55%, var(--overlay-ink) 100%);
+}
 .hero__overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(25,37,33,.92) 0%, rgba(28,42,37,.74) 42%, rgba(23,34,30,.2) 78%), linear-gradient(0deg, rgba(20,31,27,.42), transparent 50%); }
 .hero__inner { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0,1fr) 366px; gap: 42px; align-items: start; padding: 56px 64px 128px; }
 .hero__content { max-width: 740px; color: var(--bg); }
@@ -14,7 +46,7 @@
 .hero-banner { display: flex; overflow: hidden; min-height: 292px; flex-direction: column; padding: 20px; border: 1px solid var(--on-dark-bd3); border-radius: 18px; background: rgba(16,26,22,.74); color: var(--bg); box-shadow: 0 20px 48px rgba(12,20,16,.36); backdrop-filter: blur(16px); }
 .hero-banner__head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid var(--on-dark-bd3); }
 .hero-banner__head > span { display: inline-flex; align-items: center; gap: 6px; color: var(--ac); font-size: 11px; font-weight: 700; }
-.hero-banner__head > strong { color: var(--on-dark-3); font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .04em; }
+.hero-banner__head > strong { color: var(--on-dark-3); font-family: var(--ff-num); font-variant-numeric: tabular-nums; font-size: 11px; font-weight: 600; letter-spacing: .04em; }
 .hero-banner__head em { color: var(--bg); font-style: normal; font-weight: 700; }
 .hero-banner__viewport { overflow: hidden; flex: 1; }
 .hero-banner__track { display: flex; transition: transform .55s cubic-bezier(.4,0,.2,1); }
@@ -23,7 +55,7 @@
 .hero-banner__slide h3 { display: -webkit-box; overflow: hidden; min-height: 50px; margin: 12px 0 0; font-size: 17px; line-height: 1.45; letter-spacing: -.035em; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
 .hero-banner__slide p { display: -webkit-box; overflow: hidden; min-height: 38px; margin: 9px 0 0; color: var(--on-dark-2); font-size: 11.5px; line-height: 1.65; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
 .hero-banner__foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 16px; }
-.hero-banner__foot time { color: var(--on-dark-3); font-family: Inter, sans-serif; font-size: 10px; }
+.hero-banner__foot time { color: var(--on-dark-3); font-family: var(--ff-num); font-variant-numeric: tabular-nums; font-size: 10px; }
 .hero-banner__foot a { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 5px; padding: 8px 12px; border: 1px solid var(--on-dark-bd2); border-radius: 9px; background: var(--on-dark-fill); font-size: 11px; font-weight: 700; white-space: nowrap; }
 .hero-banner__foot a:hover { border-color: var(--ac-a60); background: var(--ac-a20); }
 .hero-banner__controls { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; padding-top: 15px; border-top: 1px solid var(--on-dark-bd3); }

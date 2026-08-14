@@ -1,5 +1,5 @@
 import { Fragment, useMemo, useState } from "react";
-import { ChevronLeft, ChevronRight, Download, Paperclip, Search } from "lucide-react";
+import { ChevronLeft, ChevronRight, Download, Paperclip, Search } from "../../icons";
 import { buildBoardRows, type BoardRow } from "../../data/pageMock";
 
 const PAGE_SIZE = 10;

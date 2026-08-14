@@ -1,4 +1,4 @@
-import { Minus, TrendingDown, TrendingUp } from "lucide-react";
+import { Minus, TrendingDown, TrendingUp } from "../../icons";
 import { priceByProduct, priceByRegion, priceNotices } from "../../data/portletMock";
 import { priceTrend } from "../../data/statsMock";
 import { PriceTrendChart } from "../../components/charts/PriceTrendChart";

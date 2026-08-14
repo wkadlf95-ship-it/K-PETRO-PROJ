@@ -1,4 +1,4 @@
-import { LogIn } from "lucide-react";
+import { LogIn } from "../../icons";
 import { publicNavItems } from "../../config/publicNav";
 import { RouteLink } from "../common/RouteLink";
 

@@ -1,4 +1,4 @@
-import { ExternalLink, Headphones, HelpCircle, X } from "lucide-react";
+import { ExternalLink, Headphones, HelpCircle, X } from "../../icons";
 import { useState } from "react";
 import { MascotGuide } from "../common/MascotGuide";
 import { RouteLink } from "../common/RouteLink";

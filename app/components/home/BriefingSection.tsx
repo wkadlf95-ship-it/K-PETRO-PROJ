@@ -1,4 +1,4 @@
-import { ArrowRight, CalendarDays, Headset } from "lucide-react";
+import { ArrowRight, CalendarDays, Headset } from "../../icons";
 import { briefingItems } from "../../data/sectionMock";
 import { RouteLink } from "../common/RouteLink";
 

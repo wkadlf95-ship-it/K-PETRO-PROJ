@@ -1,4 +1,4 @@
-import { Globe2 } from "lucide-react";
+import { Globe2 } from "../../icons";
 import { RouteLink } from "../common/RouteLink";
 
 const shortcuts = [

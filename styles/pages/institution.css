@@ -21,7 +21,7 @@
 .featured__hero { position: relative; display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 22px; align-items: end; overflow: hidden; padding: 30px; border-radius: 20px; background: linear-gradient(135deg, var(--dg), var(--dg)); color: var(--bg); }
 .featured__hero::after { position: absolute; right: -48px; bottom: -70px; width: 190px; height: 190px; border: 36px solid var(--on-dark-fill2); border-radius: 50%; content: ""; }
 .featured__hero > div { position: relative; z-index: 1; }
-.featured__hero span { display: inline-flex; margin-bottom: 10px; color: var(--ac-bg); font-family: Inter, sans-serif; font-size: 10px; font-weight: 800; letter-spacing: .14em; }
+.featured__hero span { display: inline-flex; margin-bottom: 10px; color: var(--ac-bg); font-family: var(--ff-num); font-variant-numeric: tabular-nums; font-size: 10px; font-weight: 800; letter-spacing: .14em; }
 .featured__hero h3 { margin: 0; font-size: 28px; line-height: 1.25; letter-spacing: -.05em; }
 .featured__hero p { margin: 12px 0 0; max-width: 680px; color: var(--on-dark-1); font-size: 13px; line-height: 1.75; }
 .featured__hero-panel { padding: 18px 19px; border: 1px solid var(--on-dark-bd3); border-radius: 15px; background: var(--on-dark-fill); backdrop-filter: blur(8px); }
@@ -31,7 +31,7 @@
 .featured__summary-grid article { display: grid; gap: 7px; padding: 20px; border: 1px solid var(--bd); border-radius: 17px; background: var(--bg); }
 .featured__summary-grid svg { color: var(--dg); }
 .featured__summary-grid span { color: var(--tx3); font-size: 11.5px; font-weight: 600; }
-.featured__summary-grid strong { font-family: Inter, "Noto Sans KR", sans-serif; font-size: 24px; letter-spacing: -.045em; }
+.featured__summary-grid strong { font-family: var(--ff-num); font-variant-numeric: tabular-nums; font-size: 24px; letter-spacing: -.045em; }
 .featured__summary-grid em { color: var(--ac-dark); font-size: 11px; font-style: normal; font-weight: 700; }
 .featured__panel { padding: 22px; border: 1px solid var(--bd); border-radius: 18px; background: var(--bg); }
 .featured__panel-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; margin-bottom: 16px; }
@@ -50,7 +50,7 @@
 .featured__table td { color: var(--tx2); }
 .report-flow { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
 .report-flow article { padding: 20px 18px; border: 1px solid var(--bd); border-radius: 16px; background: var(--bg); }
-.report-flow span { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 10px; background: var(--ac-bg); color: var(--ac-ink); font-family: Inter, sans-serif; font-size: 11px; font-weight: 900; }
+.report-flow span { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 10px; background: var(--ac-bg); color: var(--ac-ink); font-family: var(--ff-num); font-variant-numeric: tabular-nums; font-size: 11px; font-weight: 900; }
 .report-flow strong { display: block; margin-top: 14px; font-size: 14px; letter-spacing: -.03em; }
 .report-flow p { margin: 8px 0 0; color: var(--tx3); font-size: 11.5px; line-height: 1.65; }
 .featured__list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
@@ -77,14 +77,14 @@
 .calculator__form input:focus { border-color: var(--ac-dark); box-shadow: 0 0 0 3px var(--ac-a20); }
 .calculator__result { display: flex; min-width: 0; flex-direction: column; justify-content: center; padding: 14px 16px; border-radius: 13px; background: var(--dg); color: var(--bg); }
 .calculator__result span { color: var(--on-dark-2); font-size: 11px; font-weight: 700; }
-.calculator__result strong { margin-top: 7px; font-family: Inter, "Noto Sans KR", sans-serif; font-size: 24px; letter-spacing: -.045em; }
+.calculator__result strong { margin-top: 7px; font-family: var(--ff-num); font-variant-numeric: tabular-nums; font-size: 24px; letter-spacing: -.045em; }
 .timeline-view { padding-top: 26px; }
 .timeline-view section { display: grid; grid-template-columns: 120px minmax(0,1fr); gap: 20px; padding-bottom: 26px; }
-.timeline-view h3 { margin: 0; color: var(--dg); font-family: Inter, sans-serif; font-size: 21px; font-weight: 800; letter-spacing: -.04em; }
+.timeline-view h3 { margin: 0; color: var(--dg); font-family: var(--ff-num); font-variant-numeric: tabular-nums; font-size: 21px; font-weight: 800; letter-spacing: -.04em; }
 .timeline-view ul { margin: 0; padding: 0 0 0 22px; border-left: 2px solid var(--bd); list-style: none; }
 .timeline-view li { position: relative; padding: 0 0 18px 4px; }
 .timeline-view li::before { position: absolute; top: 6px; left: -29px; width: 9px; height: 9px; border: 2px solid var(--ac-dark); border-radius: 50%; background: var(--bg); content: ""; }
-.timeline-view li strong { margin-right: 12px; font-family: Inter, sans-serif; font-size: 13px; color: var(--ac-dark); }
+.timeline-view li strong { margin-right: 12px; font-family: var(--ff-num); font-variant-numeric: tabular-nums; font-size: 13px; color: var(--ac-dark); }
 .timeline-view li span { color: var(--tx2); font-size: 12.5px; }
 .org__view { padding: 34px 0 10px; text-align: center; }
 .org__top span { display: inline-block; padding: 14px 44px; border-radius: 11px; background: var(--dg); color: var(--bg); font-size: 14px; font-weight: 700; }

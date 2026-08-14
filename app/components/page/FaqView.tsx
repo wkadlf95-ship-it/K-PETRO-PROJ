@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ChevronDown, Search } from "lucide-react";
+import { ChevronDown, Search } from "../../icons";
 import { faqCategories, faqItems } from "../../data/pageMock";
 
 export function FaqView() {

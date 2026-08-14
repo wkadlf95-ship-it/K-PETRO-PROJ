@@ -1,4 +1,4 @@
-import { ChevronRight, Home } from "lucide-react";
+import { ChevronRight, Home } from "../icons";
 import { countLeaves, nodePath } from "../config/routes";
 import { siteTree } from "../config/siteTree";
 import { RouteLink } from "../components/common/RouteLink";

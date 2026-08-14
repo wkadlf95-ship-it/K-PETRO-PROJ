@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from "../../icons";
 import { heroSlides } from "../../data/homeMock";
 import { RouteLink } from "../common/RouteLink";
 

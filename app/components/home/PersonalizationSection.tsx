@@ -1,8 +1,8 @@
-import { ArrowRight, Bell, LogIn, Mail, Star, UserRound, type LucideIcon } from "lucide-react";
+import { ArrowRight, Bell, LogIn, Mail, Star, UserRound, type IconComponent } from "../../icons";
 import { personalizationItems } from "../../data/sectionMock";
 import { RouteLink } from "../common/RouteLink";
 
-const icons: Record<string, LucideIcon> = { star: Star, mail: Mail, bell: Bell };
+const icons: Record<string, IconComponent> = { star: Star, mail: Mail, bell: Bell };
 
 export function PersonalizationSection() {
   return (

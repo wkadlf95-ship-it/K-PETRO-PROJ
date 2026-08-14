@@ -6,8 +6,12 @@
    ───────────────────────────────────────────────────────────── */
 :root {
   /* ── 타이포 ── */
-  --ff: "Noto Sans KR", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --ff-num: Inter, "Noto Sans KR", sans-serif;
+  /* OS 기본 폰트만 쓴다. 외부 폰트 CDN 을 호출하지 않으므로
+     화면을 열 때 이용자 IP 가 외부로 나가지 않고, 폰트 다운로드도 없다. */
+  --ff: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
+        "맑은 고딕", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  /* 수치 표기용. 자릿수가 흔들리지 않게 tabular-nums 를 함께 쓴다(.num 참고) */
+  --ff-num: var(--ff);
 
   --fs-1: 10px;   /* 배지·캡션 */
   --fs-2: 11px;

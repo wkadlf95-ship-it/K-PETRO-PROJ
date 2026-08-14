@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CircleCheckBig, Send } from "lucide-react";
+import { CircleCheckBig, Send } from "../../icons";
 
 function FormDone({ onReset }: { onReset: () => void }) {
   return (

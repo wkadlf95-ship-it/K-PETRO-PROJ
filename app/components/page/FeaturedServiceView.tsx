@@ -15,7 +15,7 @@ import {
   ShieldCheck,
   Siren,
   TrendingDown,
-} from "lucide-react";
+} from "../../icons";
 import { RouteLink } from "../common/RouteLink";
 
 type FeaturedKind = "price" | "quality" | "report" | "briefing";

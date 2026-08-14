@@ -1,4 +1,4 @@
-import { ChevronRight, ExternalLink, Home, Printer, Share2 } from "lucide-react";
+import { ChevronRight, ExternalLink, Home, Printer, Share2 } from "../icons";
 import { nodePath, type ResolvedPage } from "../config/routes";
 import { RouteLink } from "../components/common/RouteLink";
 import { BoardView } from "../components/page";

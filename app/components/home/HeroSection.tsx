@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, Search, ShieldCheck } from "lucide-react";
+import { ArrowRight, Search, ShieldCheck } from "../../icons";
 import { heroSlides } from "../../data/homeMock";
 import { RouteLink } from "../common/RouteLink";
 import { HeroBannerSlider } from "./HeroBannerSlider";
@@ -10,11 +10,12 @@ export function HeroSection() {
   return (
     <section className="hero" aria-labelledby="hero-title">
       <div className="portal-container hero__card">
+        {/* 배경은 사진이 아니라 CSS 무늬다. 외부 이미지 호출과 초상·상표 문제가 없다.
+            무늬는 pages/home.css 의 .hero__bg--{scene} 규칙이 그린다. */}
         {heroSlides.map((item, index) => (
           <div
             key={item.title}
-            className={`hero__background ${index === slide ? "is-active" : ""}`}
-            style={{ backgroundImage: `url(${item.image})` }}
+            className={`hero__background hero__bg--${item.scene} ${index === slide ? "is-active" : ""}`}
             aria-hidden="true"
           />
         ))}

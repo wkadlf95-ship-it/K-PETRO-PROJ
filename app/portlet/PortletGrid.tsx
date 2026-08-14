@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { GripVertical, Plus, RotateCcw, Save, X } from "lucide-react";
+import { GripVertical, Plus, RotateCcw, Save, X } from "../icons";
 import { COLS, ROWS, clearLayout, loadLayout, saveLayout, type Placement } from "./layoutStore";
 import { findWidget, widgetRegistry } from "./registry";
 

@@ -1,4 +1,4 @@
-import { ExternalLink, Headset } from "lucide-react";
+import { ExternalLink, Headset } from "../../icons";
 import { footerSitemapColumns, relatedSites } from "../../data/sectionMock";
 import { BrandLogo } from "../common/BrandLogo";
 import { RouteLink } from "../common/RouteLink";

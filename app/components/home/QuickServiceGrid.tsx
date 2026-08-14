@@ -8,12 +8,12 @@ import {
   Newspaper,
   Scale,
   Siren,
-  type LucideIcon,
-} from "lucide-react";
+  type IconComponent,
+} from "../../icons";
 import { quickServices } from "../../data/homeMock";
 import { RouteLink } from "../common/RouteLink";
 
-const icons: Record<string, LucideIcon> = {
+const icons: Record<string, IconComponent> = {
   disclosure: FileSearch,
   report: Newspaper,
   law: Scale,

@@ -1,1 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+/* 외부 폰트 CDN 을 쓰지 않는다.
+   fonts.googleapis.com 을 호출하면 화면을 열 때마다 이용자 IP 가 외부로 전송된다.
+   OS 기본 한글 폰트만 사용하므로 다운로드도, 외부 호출도 없다.
+   폰트 스택은 tokens.css 의 --ff / --ff-num 에 있다. */

@@ -1,8 +1,8 @@
-import { ArrowRight, ChartPie, Fuel, Minus, Siren, TrendingDown, TrendingUp, type LucideIcon } from "lucide-react";
+import { ArrowRight, ChartPie, Fuel, Minus, Siren, TrendingDown, TrendingUp, type IconComponent } from "../../icons";
 import { summaryCards } from "../../data/homeMock";
 import { RouteLink } from "../common/RouteLink";
 
-const cardIcons: Record<string, LucideIcon> = {
+const cardIcons: Record<string, IconComponent> = {
   가격정보: Fuel,
   품질정보: ChartPie,
   유통현황: ChartPie,

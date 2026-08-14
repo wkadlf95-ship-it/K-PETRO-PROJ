@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Filter } from "lucide-react";
+import { Filter } from "../icons";
 import { priceFilters, priceKpis } from "../data/portletMock";
 import { Delta } from "./widgets/priceWidgets";
 import { defaultPriceLayout } from "./layoutStore";

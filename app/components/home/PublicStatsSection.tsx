@@ -1,4 +1,4 @@
-import { ArrowRight, Info, Ship, TriangleAlert } from "lucide-react";
+import { ArrowRight, Info, Ship, TriangleAlert } from "../../icons";
 import { anomalySummary, crudeTransport, priceTrend } from "../../data/statsMock";
 import { DistributionDonut } from "../charts/DistributionDonut";
 import { PriceTrendChart } from "../charts/PriceTrendChart";
