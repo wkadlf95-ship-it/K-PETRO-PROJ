@@ -1,0 +1,28 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "대국민포털: 개발 서버 실행",
+      "type": "shell",
+      "command": "${workspaceFolder}\\start-dev.cmd",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "vite",
+        "pattern": { "regexp": "^$" },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Starting the React development server|VITE",
+          "endsPattern": "Local:.*http://localhost:"
+        }
+      },
+      "presentation": { "reveal": "always", "panel": "dedicated", "focus": true }
+    },
+    {
+      "label": "대국민포털: 프로덕션 빌드",
+      "type": "shell",
+      "command": "${workspaceFolder}\\build-prod.cmd",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    }
+  ]
+}
