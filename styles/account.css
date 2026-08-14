@@ -13,6 +13,9 @@
 .status-dot.status-review { background: #c9a52a; }
 .status-dot.status-later { background: #a9ada4; }
 
+/* 로그인 필요 안내 — form/search kind 화면 중 loginRequired인 경우 상단에 노출 */
+.login-required-note { margin: 0 0 20px; padding: 12px 16px; border: 1px solid #d7dcee; border-radius: 11px; background: #eef1fa; color: #3d4a72; font-size: 11.5px; font-weight: 600; }
+
 /* 로그인 / 회원가입 */
 .auth-page { display: grid; padding: 52px 0 80px; background: #f6f7f3; }
 .auth-wrap { display: grid; place-items: center; }

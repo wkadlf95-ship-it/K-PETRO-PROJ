@@ -14,8 +14,8 @@ function PageBody({ page }: { page: ResolvedPage }) {
   switch (leaf.kind) {
     case "board": return <BoardView title={leaf.label} />;
     case "faq": return <FaqView />;
-    case "search": return <SearchView title={leaf.label} />;
-    case "form": return <FormView title={leaf.label} />;
+    case "search": return <SearchView title={leaf.label} loginRequired={leaf.loginRequired} />;
+    case "form": return <FormView title={leaf.label} loginRequired={leaf.loginRequired} />;
     case "timeline": return <TimelineView />;
     case "org": return <OrgView />;
     case "location": return <LocationView slug={leaf.slug} />;

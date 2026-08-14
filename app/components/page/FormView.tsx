@@ -15,7 +15,7 @@ function FormDone({ onReset }: { onReset: () => void }) {
   );
 }
 
-export function FormView({ title }: { title: string }) {
+export function FormView({ title, loginRequired }: { title: string; loginRequired?: boolean }) {
   const [done, setDone] = useState(false);
   const [agree, setAgree] = useState(false);
 
@@ -23,6 +23,7 @@ export function FormView({ title }: { title: string }) {
 
   return (
     <form className="form-view" onSubmit={(e) => { e.preventDefault(); setDone(true); }}>
+      {loginRequired && <p className="login-required-note">🔒 로그인 후 이용 가능한 화면입니다. 신청 전 로그인해 주세요.</p>}
       <p className="content-lead">{title} 신청서를 작성해 주세요. <em>*</em> 표시는 필수 입력 항목입니다.</p>
 
       <div className="form-grid">

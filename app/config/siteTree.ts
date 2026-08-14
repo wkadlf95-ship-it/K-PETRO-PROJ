@@ -12,6 +12,8 @@ export type MenuNode = {
   // 요구사항 관리대장(08.대국민포털_화면명세) 기준 신규 제안 화면에만 채워집니다.
   // 기존 대표홈페이지를 그대로 이관한 화면에는 없습니다(=확정 콘텐츠).
   status?: string;
+  // 로그인해야 이용 가능한 화면(kind: "form" | "search" 등)에 표시합니다.
+  loginRequired?: boolean;
 };
 
 export const siteTree: MenuNode[] = [
@@ -83,7 +85,7 @@ export const siteTree: MenuNode[] = [
           { label: "소비자연료 무상 품질점검", slug: "freecheck", kind: "content" },
           { label: "생활공감 정책", slug: "life", kind: "content" },
           { label: "품질관리 협약주유소", slug: "station", kind: "search" },
-          { label: "연료 품질 확인서비스", slug: "fuelcheck", kind: "form" },
+          { label: "연료 품질 확인서비스", slug: "fuelcheck", kind: "form", loginRequired: true },
           { label: "불법석유제품 취급업소 현황", slug: "illegal", kind: "external", href: "http://www.opinet.co.kr/dlarSelect.do" },
           { label: "오일톡톡", slug: "oiltalk", kind: "external", href: "https://www.kpetro.or.kr/smart/" },
         ],
@@ -198,7 +200,7 @@ export const siteTree: MenuNode[] = [
           { label: "공공데이터 목록", slug: "catalog", kind: "search" },
           { label: "이용안내", slug: "guide", kind: "content" },
           { label: "Open API", slug: "api", kind: "content" },
-          { label: "API 사용현황 조회", slug: "usage", kind: "search", status: "미정·후순위" },
+          { label: "API 사용현황 조회", slug: "usage", kind: "search", status: "미정·후순위", loginRequired: true },
           { label: "연료품질정보", slug: "fuel", kind: "search" },
           { label: "불법행위 공표현황", slug: "illegal", kind: "board" },
         ],

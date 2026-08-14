@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import { buildInspectionRows, searchProducts, searchRegions } from "../../data/pageMock";
 
-export function SearchView({ title }: { title: string }) {
+export function SearchView({ title, loginRequired }: { title: string; loginRequired?: boolean }) {
   const [region, setRegion] = useState("전체");
   const [product, setProduct] = useState("전체");
   const [submitted, setSubmitted] = useState(false);
@@ -14,6 +14,7 @@ export function SearchView({ title }: { title: string }) {
 
   return (
     <div className="search-view">
+      {loginRequired && <p className="login-required-note">🔒 로그인 후 이용 가능한 화면입니다. 본인 신청 내역만 조회됩니다.</p>}
       <form className="search-panel" onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
         <div className="search-field">
           <label htmlFor="sv-region">지역</label>
