@@ -1,8 +1,9 @@
 import { ChevronRight, ExternalLink, Home, Printer, Share2 } from "lucide-react";
 import { nodePath, type ResolvedPage } from "../config/routes";
 import { RouteLink } from "../components/common/RouteLink";
+import { StatusBadge } from "../components/common/StatusBadge";
 import { BoardView } from "../components/page";
-import { ContentView, FaqView, FormView, LocationView, OrgView, SearchView, TimelineView } from "../components/page";
+import { CalculatorView, ContentView, FaqView, FormView, LocationView, MapView, OrgView, SearchView, TimelineView } from "../components/page";
 import { FeaturedServiceView, getFeaturedServiceKind } from "../components/page/FeaturedServiceView";
 
 function PageBody({ page }: { page: ResolvedPage }) {
@@ -18,6 +19,8 @@ function PageBody({ page }: { page: ResolvedPage }) {
     case "timeline": return <TimelineView />;
     case "org": return <OrgView />;
     case "location": return <LocationView slug={leaf.slug} />;
+    case "map": return <MapView slug={leaf.slug} title={leaf.label} />;
+    case "calculator": return <CalculatorView title={leaf.label} />;
     default: return <ContentView title={leaf.label} desc={top.desc ?? ""} />;
   }
 }
@@ -69,7 +72,7 @@ export function InstitutionPage({ page }: { page: ResolvedPage }) {
 
         <div className="institution-body">
           <div className="institution-head">
-            <h2>{leaf.label}</h2>
+            <h2>{leaf.label}{leaf.status && <StatusBadge status={leaf.status} />}</h2>
             <div className="institution-tools">
               <button type="button" onClick={() => window.print()} aria-label="인쇄"><Printer size={15} /></button>
               <button type="button" aria-label="공유"><Share2 size={15} /></button>

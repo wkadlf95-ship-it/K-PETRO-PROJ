@@ -1,6 +1,7 @@
 import { nodePath } from "../../config/routes";
 import { siteTree } from "../../config/siteTree";
 import { RouteLink } from "../common/RouteLink";
+import { StatusBadge } from "../common/StatusBadge";
 
 export function AllMenuPanel() {
   return (
@@ -20,6 +21,7 @@ export function AllMenuPanel() {
                       ) : (
                         <RouteLink to={nodePath(top, mid, leaf)}>{leaf.label}</RouteLink>
                       )}
+                      {leaf.status && <StatusBadge status={leaf.status} compact />}
                     </li>
                   ))}
                 </ul>

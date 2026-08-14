@@ -11,6 +11,7 @@ const shortcuts = [
 const utilityLinks = [
   { label: "회원가입", path: "/member/join" },
   { label: "로그인", path: "/member/login" },
+  { label: "마이페이지", path: "/mypage" },
   { label: "방문신청", path: "/service/charter/facility" },
   { label: "사이트맵", path: "/sitemap" },
 ];

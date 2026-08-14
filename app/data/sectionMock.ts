@@ -56,6 +56,7 @@ export const footerSitemapColumns: { title: string; path: string; links: string[
 
 export const relatedSites: { label: string; href: string }[] = [
   { label: "수급보고시스템 바로가기", href: "https://www.oilreport.or.kr/" },
-  { label: "수소유통정보시스템 바로가기", href: "#hydrogen" },
+  // 확정된 외부 시스템 URL이 없어, 기존에 있는 수소유통전담기관 안내 콘텐츠로 대신 연결합니다.
+  { label: "수소유통전담기관 안내", href: "#/business/hydrogen/intro" },
   { label: "관련 사이트", href: "#related" },
 ];

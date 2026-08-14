@@ -1,6 +1,6 @@
 // 한국석유관리원 대표홈페이지 전체 메뉴 트리.
 // kind가 페이지 유형을 결정하고, PageRenderer가 유형별 화면을 그립니다.
-export type PageKind = "content" | "board" | "form" | "search" | "faq" | "timeline" | "org" | "location" | "external";
+export type PageKind = "content" | "board" | "form" | "search" | "faq" | "timeline" | "org" | "location" | "external" | "map" | "calculator";
 
 export type MenuNode = {
   label: string;
@@ -9,6 +9,9 @@ export type MenuNode = {
   href?: string;
   desc?: string;
   children?: MenuNode[];
+  // 요구사항 관리대장(08.대국민포털_화면명세) 기준 신규 제안 화면에만 채워집니다.
+  // 기존 대표홈페이지를 그대로 이관한 화면에는 없습니다(=확정 콘텐츠).
+  status?: string;
 };
 
 export const siteTree: MenuNode[] = [
@@ -112,6 +115,11 @@ export const siteTree: MenuNode[] = [
           { label: "가짜석유 신고 묻고답하기", slug: "fakeqna", kind: "board" },
         ],
       },
+      {
+        label: "뉴스레터", slug: "newsletter", children: [
+          { label: "뉴스레터 구독관리", slug: "subscribe", kind: "form", status: "미정·필수" },
+        ],
+      },
     ],
   },
   {
@@ -190,8 +198,16 @@ export const siteTree: MenuNode[] = [
           { label: "공공데이터 목록", slug: "catalog", kind: "search" },
           { label: "이용안내", slug: "guide", kind: "content" },
           { label: "Open API", slug: "api", kind: "content" },
+          { label: "API 사용현황 조회", slug: "usage", kind: "search", status: "미정·후순위" },
           { label: "연료품질정보", slug: "fuel", kind: "search" },
           { label: "불법행위 공표현황", slug: "illegal", kind: "board" },
+        ],
+      },
+      {
+        label: "정책·약관", slug: "policy", children: [
+          { label: "개인정보처리방침", slug: "privacy", kind: "content", status: "미정·검토" },
+          { label: "이용약관", slug: "terms", kind: "content", status: "미정·검토" },
+          { label: "웹접근성 안내", slug: "accessibility", kind: "content", status: "미정·검토" },
         ],
       },
     ],
@@ -296,12 +312,14 @@ export const siteTree: MenuNode[] = [
           { label: "유종별 가격", slug: "type", kind: "search" },
           { label: "지역별 가격", slug: "region", kind: "search" },
           { label: "가격 추이", slug: "trend", kind: "content" },
+          { label: "가격지도·통합지도", slug: "map", kind: "map", status: "협의중·필수" },
         ],
       },
       {
         label: "품질정보", slug: "quality", children: [
           { label: "품질검사 결과 공개", slug: "result", kind: "search" },
           { label: "품질기준", slug: "standard", kind: "content" },
+          { label: "주유소 신뢰지수", slug: "trust", kind: "search", status: "미정·후순위" },
         ],
       },
       {
@@ -322,6 +340,19 @@ export const siteTree: MenuNode[] = [
         label: "브리핑", slug: "briefing", children: [
           { label: "오늘의 브리핑", slug: "today", kind: "board" },
           { label: "동향 리포트", slug: "report", kind: "board" },
+        ],
+      },
+      {
+        label: "이용활성화", slug: "tools", children: [
+          { label: "내 차 월 주유비 계산기", slug: "calculator", kind: "calculator", status: "미정·후순위" },
+          { label: "AI 유가예측 안내", slug: "forecast", kind: "content", status: "미정·후순위" },
+          { label: "장거리 주유 플래너", slug: "planner", kind: "map", status: "미정·후순위" },
+        ],
+      },
+      {
+        label: "유관기관·안전", slug: "partner", children: [
+          { label: "유관기관 정보제공", slug: "info", kind: "content", status: "미정·검토" },
+          { label: "재난상황 위치정보", slug: "disaster", kind: "map", status: "미정·후순위" },
         ],
       },
     ],

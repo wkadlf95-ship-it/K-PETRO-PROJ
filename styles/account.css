@@ -1,0 +1,103 @@
+/* 이번에 신규 이식한 화면 전용: 로그인/회원가입, 마이페이지, 지도형 화면,
+   계산기, 신규 제안 상태배지. siteTree 기존 콘텐츠와는 분리해 관리합니다. */
+
+/* 상태배지 — 요구사항 관리대장 기준 신규 제안 화면 표시 */
+.status-badge { display: inline-flex; flex: 0 0 auto; align-items: center; padding: 4px 10px; border-radius: 999px; font-size: 9.5px; font-weight: 700; letter-spacing: .02em; }
+.status-badge.status-urgent { background: #fae7e4; color: #b04a3e; }
+.status-badge.status-review { background: #eef3dc; color: #5d6f2a; }
+.status-badge.status-later { background: #eceeeb; color: #6f746c; }
+.sub-hero .status-badge { margin: 4px 0 10px; }
+.status-dot { display: inline-block; flex: 0 0 auto; width: 7px; height: 7px; border-radius: 50%; }
+.status-dot.status-urgent { background: #d16a58; }
+.status-dot.status-review { background: #c9a52a; }
+.status-dot.status-later { background: #a9ada4; }
+
+/* 로그인 / 회원가입 */
+.auth-page { display: grid; padding: 52px 0 80px; background: #f6f7f3; }
+.auth-wrap { display: grid; place-items: center; }
+.auth-card { width: min(420px, 100%); padding: 34px 32px; border: 1px solid var(--line); border-radius: 22px; background: #fff; box-shadow: var(--shadow); }
+.auth-card > .status-badge { margin: 6px 0 0; }
+.auth-card h1 { display: flex; align-items: center; gap: 9px; margin: 10px 0 8px; font-size: 24px; letter-spacing: -.04em; }
+.auth-card > p { margin: 0 0 24px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.auth-form { display: grid; gap: 13px; }
+.auth-form label { display: grid; gap: 6px; font-size: 10px; color: #5c6156; }
+.auth-form input { padding: 11px 13px; border: 1px solid var(--line); border-radius: 10px; outline: 0; font-size: 12px; }
+.auth-form input:focus { border-color: #9eb52f; box-shadow: 0 0 0 3px rgba(191,214,59,.2); }
+.auth-checkbox { display: flex !important; flex-direction: row; align-items: center; gap: 8px; font-size: 10px; }
+.auth-checkbox input { width: auto; padding: 0; }
+.auth-form button { justify-content: center; width: 100%; margin-top: 4px; }
+.auth-divider { position: relative; margin: 22px 0; text-align: center; }
+.auth-divider::before { position: absolute; top: 50%; right: 0; left: 0; height: 1px; content: ""; background: var(--line); }
+.auth-divider span { position: relative; padding: 0 12px; background: #fff; color: #9a9e93; font-size: 10px; }
+.auth-simple-auth { display: flex; width: 100%; align-items: center; justify-content: center; gap: 8px; padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: #f8f9f4; color: #3a3f38; font-size: 12px; font-weight: 700; }
+.auth-switch { margin-top: 18px; color: var(--muted); font-size: 11px; text-align: center; }
+.auth-switch a { color: var(--deep-green); font-weight: 700; }
+.auth-card .content-note { margin-top: 20px; }
+
+/* 마이페이지 */
+.mypage-widgets { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 18px; }
+.mypage-widget { display: flex; align-items: flex-start; gap: 12px; padding: 19px; border: 1px solid var(--line); border-radius: 15px; background: #fff; }
+.mypage-widget span { display: grid; flex: 0 0 auto; width: 34px; height: 34px; place-items: center; border-radius: 10px; background: #eef3dc; color: #64752c; }
+.mypage-widget small { display: block; color: var(--muted); font-size: 10px; }
+.mypage-widget strong { display: block; margin: 4px 0; font-size: 18px; }
+.mypage-widget p { margin: 0; color: #858a81; font-size: 9px; }
+.mypage-settings { display: grid; gap: 10px; padding: 6px 0 20px; }
+.mypage-settings article { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 18px 20px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+.mypage-settings h3 { display: flex; align-items: center; gap: 6px; margin: 0 0 4px; font-size: 12px; }
+.mypage-settings p { margin: 0; color: var(--muted); font-size: 10px; }
+.mypage-settings button { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 6px; padding: 9px 14px; border: 1px solid var(--line); border-radius: 9px; background: #fff; color: #4c524a; font-size: 10px; font-weight: 700; }
+
+/* 지도형 화면 (지도 API 연동 전 자리 표시) */
+.map-view { padding-top: 22px; }
+.map-view-frame { position: relative; padding: 14px; border: 1px solid var(--line); border-radius: 17px; background: #fff; }
+.map-view-canvas {
+  position: relative; height: 320px; overflow: hidden; border-radius: 13px;
+  background:
+    repeating-linear-gradient(100deg, rgba(255,255,255,.55) 0 2px, transparent 2px 64px),
+    repeating-linear-gradient(10deg, rgba(255,255,255,.4) 0 2px, transparent 2px 90px),
+    linear-gradient(160deg, #dfe9d8 0%, #e9efe0 46%, #d8e6ec 100%);
+}
+.map-view-canvas::before {
+  position: absolute; top: 14%; left: 8%; width: 34%; height: 30%; content: "";
+  background: rgba(148, 186, 214, .45); border-radius: 46% 54% 60% 40% / 50% 45% 55% 50%;
+}
+.map-view-canvas::after {
+  position: absolute; right: 10%; bottom: 12%; width: 26%; height: 22%; content: "";
+  background: rgba(150, 196, 150, .4); border-radius: 55% 45% 48% 52% / 46% 54% 46% 54%;
+}
+.map-view-pin { position: absolute; z-index: 1; display: flex; flex-direction: column; align-items: center; transform: translate(-50%, -100%); color: #b8503f; filter: drop-shadow(0 3px 5px rgba(30,40,25,.25)); }
+.map-view-pin em { margin-top: 3px; padding: 3px 8px; border-radius: 999px; background: #fff; color: #3a3f38; font-size: 9px; font-style: normal; font-weight: 700; white-space: nowrap; box-shadow: 0 4px 10px rgba(30,40,25,.14); }
+.map-view-controls { position: absolute; top: 14px; right: 14px; z-index: 1; display: grid; overflow: hidden; border-radius: 9px; background: #fff; box-shadow: 0 6px 16px rgba(30,40,25,.16); }
+.map-view-controls button { display: block; width: 30px; height: 30px; border: 0; border-bottom: 1px solid var(--line); background: transparent; color: #4c524a; font-size: 15px; }
+.map-view-controls button:last-child { border-bottom: 0; }
+.map-view-badge { position: absolute; right: 12px; bottom: 10px; z-index: 1; padding: 4px 9px; border-radius: 999px; background: rgba(255,255,255,.85); color: #5c6156; font-size: 8.5px; font-weight: 700; }
+.map-view-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+.map-view-legend span { display: inline-flex; align-items: center; gap: 6px; color: #5c6156; font-size: 10px; }
+.map-view-legend i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; }
+.map-view-legend i.tone-low { background: #63a94e; }
+.map-view-legend i.tone-mid { background: #c9a52a; }
+.map-view-legend i.tone-high { background: #d16a58; }
+
+/* 계산기 */
+.calculator-view { padding-top: 22px; }
+.calculator-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: end; margin-top: 20px; padding: 20px 22px; border: 1px solid var(--line); border-radius: 14px; background: #f7f8f4; }
+.calculator-form label { display: flex; flex-direction: column; gap: 6px; color: #5c6157; font-size: 11.5px; font-weight: 600; }
+.calculator-form input { padding: 10px 12px; border: 1px solid var(--line); border-radius: 9px; background: #fff; font-size: 12.5px; outline: 0; }
+.calculator-form input:focus { border-color: var(--accent-dark); box-shadow: 0 0 0 3px rgba(191,214,59,.18); }
+.calculator-result { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; padding: 16px 18px; border: 1px solid #dfe2d8; border-radius: 11px; background: #fff; }
+.calculator-result span { display: inline-flex; align-items: center; gap: 7px; color: #5c6157; font-size: 12px; font-weight: 600; }
+.calculator-result strong { font-family: Inter, "Noto Sans KR", sans-serif; font-size: 22px; color: var(--deep-green); letter-spacing: -.03em; }
+
+@media (max-width: 900px) {
+  .mypage-widgets { grid-template-columns: 1fr; }
+  .calculator-form { grid-template-columns: 1fr; }
+  .map-view-canvas { height: 260px; }
+}
+
+@media (max-width: 640px) {
+  .auth-card { padding: 26px 20px; border-radius: 18px; }
+  .mypage-settings article { flex-direction: column; align-items: flex-start; }
+  .map-view-canvas { height: 220px; }
+  .map-view-pin em { font-size: 8px; padding: 2px 6px; }
+  .map-view-legend { flex-direction: column; gap: 8px; }
+}

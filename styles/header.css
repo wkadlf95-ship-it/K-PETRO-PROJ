@@ -57,6 +57,7 @@
 .all-menu-group { margin-bottom: 16px; }
 .all-menu-group > strong { display: block; margin-bottom: 7px; color: #5c6157; font-size: 12px; }
 .all-menu-group ul { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.all-menu-group li { display: flex; align-items: center; gap: 6px; }
 .all-menu-group li a { display: block; padding: 4px 0; color: #7b8077; font-size: 11.5px; }
 .all-menu-group li a:hover { color: var(--accent-dark); text-decoration: underline; }
 

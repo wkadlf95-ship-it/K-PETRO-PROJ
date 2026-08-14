@@ -8,10 +8,10 @@ function FooterPolicyLinks() {
     <div className="footer-top">
       <div className="portal-container footer-links">
         <RouteLink to="/about/ceo/greeting">기관소개</RouteLink>
-        <a href="#privacy" className="strong">개인정보처리방침</a>
-        <a href="#terms">이용약관</a>
-        <a href="#accessibility">웹접근성</a>
-        <a href="#sitemap">사이트맵</a>
+        <RouteLink to="/disclosure/policy/privacy" className="strong">개인정보처리방침</RouteLink>
+        <RouteLink to="/disclosure/policy/terms">이용약관</RouteLink>
+        <RouteLink to="/disclosure/policy/accessibility">웹접근성</RouteLink>
+        <RouteLink to="/sitemap">사이트맵</RouteLink>
         <RouteLink to="/service/report/guide">고객센터</RouteLink>
       </div>
     </div>

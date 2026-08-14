@@ -20,6 +20,11 @@
 .sub-tabs a:hover { background: #f9faf5; color: #3d443b; }
 .sub-tabs a.is-active { color: #283a35; background: #f7f9ee; }
 .sub-tabs a.is-active::after { position: absolute; right: 0; bottom: 0; left: 0; height: 3px; content: ""; background: var(--accent); }
+.sub-tabs button { position: relative; flex: 1; min-width: 130px; padding: 18px 14px; border: 0; border-right: 1px solid #eceee9; background: #fff; color: #73786f; font-size: 12px; font-weight: 600; }
+.sub-tabs button:first-child { border-left: 1px solid #eceee9; }
+.sub-tabs button:hover { background: #f9faf5; color: #3d443b; }
+.sub-tabs button.is-active { color: #283a35; background: #f7f9ee; }
+.sub-tabs button.is-active::after { position: absolute; right: 0; bottom: 0; left: 0; height: 3px; content: ""; background: var(--accent); }
 
 /* 본문 레이아웃 + LNB */
 .institution-layout { display: grid; grid-template-columns: 236px minmax(0,1fr); gap: 30px; padding-top: 36px; padding-bottom: 72px; }
@@ -32,7 +37,7 @@
 .lnb li a svg { color: #a9aea3; }
 .institution-body { min-width: 0; padding: 28px 30px 34px; border: 1px solid var(--line); border-radius: 17px; background: #fff; }
 .institution-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 18px; border-bottom: 2px solid var(--ink); }
-.institution-head h2 { margin: 0; font-size: 23px; letter-spacing: -.045em; }
+.institution-head h2 { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 23px; letter-spacing: -.045em; }
 .institution-tools { display: flex; gap: 6px; }
 .institution-tools button { display: grid; width: 32px; height: 32px; place-items: center; border: 1px solid var(--line); border-radius: 9px; background: #fff; color: #6e746a; }
 .institution-tools button:hover { border-color: var(--accent-dark); background: #f7f9ed; }
@@ -241,6 +246,7 @@
 .sitemap-group { margin-bottom: 16px; }
 .sitemap-group > strong { display: block; margin-bottom: 7px; color: #5c6157; font-size: 12px; }
 .sitemap-group ul { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.sitemap-group li { display: flex; align-items: center; gap: 6px; }
 .sitemap-group li a { display: block; padding: 4px 0; color: #7b8077; font-size: 11.5px; }
 .sitemap-group li a:hover { color: var(--accent-dark); text-decoration: underline; }
 

@@ -2,6 +2,7 @@ import { ChevronRight, Home } from "lucide-react";
 import { countLeaves, nodePath } from "../config/routes";
 import { siteTree } from "../config/siteTree";
 import { RouteLink } from "../components/common/RouteLink";
+import { StatusBadge } from "../components/common/StatusBadge";
 
 export function SitemapPage() {
   return (
@@ -32,6 +33,7 @@ export function SitemapPage() {
                         {leaf.kind === "external" && leaf.href
                           ? <a href={leaf.href} target="_blank" rel="noreferrer">{leaf.label}</a>
                           : <RouteLink to={nodePath(top, mid, leaf)}>{leaf.label}</RouteLink>}
+                        {leaf.status && <StatusBadge status={leaf.status} compact />}
                       </li>
                     ))}
                   </ul>

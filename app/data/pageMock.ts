@@ -97,3 +97,31 @@ export function buildInspectionRows(total = 8): InspectionRow[] {
     result: i % 7 === 0 ? "부적합" : "적합",
   }));
 }
+
+// 지도 API 연동 전, 지도형 화면(가격지도·주유플래너·재난정보)에 쓰는 핀 자리표시 데이터입니다.
+export type MapPin = { label: string; note?: string };
+export type MapPreset = { caption: string; pins: MapPin[]; legend?: { label: string; tone: "low" | "mid" | "high" }[] };
+
+export const mapPresets: Record<string, MapPreset> = {
+  map: {
+    caption: "오피넷 Open API·GIS 데이터 연계 지도 화면 (시안)",
+    pins: [
+      { label: "수도권", note: "1,672원" }, { label: "강원권", note: "1,701원" }, { label: "충청권", note: "1,658원" },
+      { label: "전라권", note: "1,649원" }, { label: "경상권", note: "1,684원" }, { label: "제주권", note: "1,712원" },
+    ],
+    legend: [{ label: "저가 지역", tone: "low" }, { label: "평균 지역", tone: "mid" }, { label: "고가 지역", tone: "high" }],
+  },
+  planner: {
+    caption: "경로 기반 저가 주유소 안내 지도 화면 (시안)",
+    pins: [{ label: "출발지" }, { label: "경유 주유소" }, { label: "경유 주유소" }, { label: "목적지" }],
+  },
+  disaster: {
+    caption: "재난정보 연계기관 API 기반 위치 지도 화면 (시안)",
+    pins: [{ label: "재난상황 A" }, { label: "재난상황 B" }, { label: "재난상황 C" }],
+  },
+};
+
+export const MAP_PIN_POSITIONS = [
+  { top: "22%", left: "28%" }, { top: "44%", left: "56%" }, { top: "64%", left: "20%" },
+  { top: "34%", left: "74%" }, { top: "72%", left: "48%" }, { top: "16%", left: "58%" },
+];
