@@ -1,9 +1,10 @@
-import { ChevronRight, ExternalLink, Home, Printer, Share2 } from "lucide-react";
+import { ChevronRight, ExternalLink, Home, Printer, Share2 } from "../icons";
 import { nodePath, type ResolvedPage } from "../config/routes";
 import { RouteLink } from "../components/common/RouteLink";
 import { BoardView } from "../components/page";
 import { CalculatorView, ContentView, FaqView, FormView, GeoDataView, LocationView, OrgView, SearchView, TimelineView } from "../components/page";
 import { FeaturedServiceView, getFeaturedServiceKind } from "../components/page/FeaturedServiceView";
+import { PricePortletPage } from "../portlet/PricePortletPage";
 
 function PageBody({ page }: { page: ResolvedPage }) {
   const { leaf, top } = page;
@@ -17,6 +18,8 @@ function PageBody({ page }: { page: ResolvedPage }) {
     case "form": return <FormView title={leaf.label} />;
     case "geo": return <GeoDataView slug={leaf.slug} title={leaf.label} />;
     case "calculator": return <CalculatorView title={leaf.label} />;
+    // 포틀릿 화면은 배치를 경로별로 저장한다
+    case "portlet": return <PricePortletPage pageKey={page.path} />;
     case "timeline": return <TimelineView />;
     case "org": return <OrgView />;
     case "location": return <LocationView slug={leaf.slug} />;
@@ -45,7 +48,7 @@ export function InstitutionPage({ page }: { page: ResolvedPage }) {
         </div>
       </div>
 
-      <div className="sub-tabs-wrap">
+      <div className="sub-tabs__wrap">
         <nav className="portal-container sub-tabs" aria-label={`${mid.label} 하위 메뉴`}>
           {mid.children?.map((item) => (
             item.kind === "external" && item.href
@@ -55,7 +58,7 @@ export function InstitutionPage({ page }: { page: ResolvedPage }) {
         </nav>
       </div>
 
-      <div className="portal-container institution-layout">
+      <div className="portal-container institution__layout">
         <aside className="lnb" aria-label={`${top.label} 메뉴`}>
           <h2>{top.label}</h2>
           <ul>
@@ -69,10 +72,10 @@ export function InstitutionPage({ page }: { page: ResolvedPage }) {
           </ul>
         </aside>
 
-        <div className="institution-body">
-          <div className="institution-head">
+        <div className="institution__body">
+          <div className="institution__head">
             <h2>{leaf.label}</h2>
-            <div className="institution-tools">
+            <div className="institution__tools">
               <button type="button" onClick={() => window.print()} aria-label="인쇄"><Printer size={15} /></button>
               <button type="button" aria-label="공유"><Share2 size={15} /></button>
             </div>

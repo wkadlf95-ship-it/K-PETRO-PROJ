@@ -1,8 +1,8 @@
-import { Search } from "lucide-react";
+import { Search } from "../../icons";
 
 export function HeaderSearch() {
   return (
-    <div className="header-search-panel">
+    <div className="header-search__panel">
       <form className="portal-container header-search" onSubmit={(event) => event.preventDefault()}>
         <Search size={20} aria-hidden="true" />
         <input

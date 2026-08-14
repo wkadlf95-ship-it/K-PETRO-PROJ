@@ -1,0 +1,127 @@
+/* pages/home.css — 메인 화면 배치 */
+
+.hero { padding: 24px 0 0; background: var(--bg); }
+.hero__card { position: relative; min-height: 470px; overflow: hidden; border-radius: 28px; background: var(--dg-dark); box-shadow: var(--shadow); }
+/* ── Hero 배경 무늬 ──
+   사진을 쓰지 않는다. 외부 이미지 호출이 없고, 사진 속 인물·상표·건물에 대한
+   권리 문제도 생기지 않는다. 무늬는 슬라이드 주제에 맞춰 4종을 둔다. */
+.hero__background { position: absolute; inset: 0; opacity: 0; transition: opacity var(--motion-slow) ease; }
+.hero__background.is-active { opacity: 1; }
+
+/* 품질검사 — 격자 무늬(측정·검사) */
+.hero__bg--quality {
+  background:
+    repeating-linear-gradient(0deg, var(--on-dark-bd4) 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(90deg, var(--on-dark-bd4) 0 1px, transparent 1px 34px),
+    radial-gradient(120% 90% at 78% 18%, var(--dg) 0%, var(--dg-dark) 55%, var(--overlay-ink) 100%);
+}
+
+/* 공공데이터 — 사선 무늬(데이터 흐름) */
+.hero__bg--data {
+  background:
+    repeating-linear-gradient(58deg, var(--on-dark-bd4) 0 2px, transparent 2px 22px),
+    radial-gradient(115% 95% at 82% 22%, var(--dg) 0%, var(--dg-dark) 52%, var(--overlay-ink) 100%);
+}
+
+/* 브리핑 — 동심원(발신·전파) */
+.hero__bg--briefing {
+  background:
+    repeating-radial-gradient(circle at 80% 24%, var(--on-dark-bd4) 0 1px, transparent 1px 46px),
+    radial-gradient(120% 95% at 76% 20%, var(--dg) 0%, var(--dg-dark) 58%, var(--overlay-ink) 100%);
+}
+
+/* 신고·포상 — 굵은 사선 띠(주의 표지) */
+.hero__bg--report {
+  background:
+    repeating-linear-gradient(-45deg, var(--on-dark-fill2) 0 14px, transparent 14px 40px),
+    radial-gradient(120% 95% at 80% 20%, var(--dg) 0%, var(--dg-dark) 55%, var(--overlay-ink) 100%);
+}
+.hero__overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(25,37,33,.92) 0%, rgba(28,42,37,.74) 42%, rgba(23,34,30,.2) 78%), linear-gradient(0deg, rgba(20,31,27,.42), transparent 50%); }
+.hero__inner { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0,1fr) 366px; gap: 42px; align-items: start; padding: 56px 64px 128px; }
+.hero__content { max-width: 740px; color: var(--bg); }
+.hero__kicker { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 20px; padding: 7px 11px; border: 1px solid var(--on-dark-bd2); border-radius: 999px; background: var(--on-dark-fill); font-size: 11px; font-weight: 700; backdrop-filter: blur(8px); }
+.hero__content h1 { margin: 0; font-size: clamp(32px, 3.4vw, 46px); font-weight: 700; line-height: 1.24; letter-spacing: -.05em; }
+.hero__content p { margin: 18px 0 0; color: var(--on-dark-1); font-size: 14px; line-height: 1.8; letter-spacing: -.02em; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 26px; }
+.hero-banner { display: flex; overflow: hidden; min-height: 292px; flex-direction: column; padding: 20px; border: 1px solid var(--on-dark-bd3); border-radius: 18px; background: rgba(16,26,22,.74); color: var(--bg); box-shadow: 0 20px 48px rgba(12,20,16,.36); backdrop-filter: blur(16px); }
+.hero-banner__head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid var(--on-dark-bd3); }
+.hero-banner__head > span { display: inline-flex; align-items: center; gap: 6px; color: var(--ac); font-size: 11px; font-weight: 700; }
+.hero-banner__head > strong { color: var(--on-dark-3); font-family: var(--ff-num); font-variant-numeric: tabular-nums; font-size: 11px; font-weight: 600; letter-spacing: .04em; }
+.hero-banner__head em { color: var(--bg); font-style: normal; font-weight: 700; }
+.hero-banner__viewport { overflow: hidden; flex: 1; }
+.hero-banner__track { display: flex; transition: transform .55s cubic-bezier(.4,0,.2,1); }
+.hero-banner__slide { display: flex; flex: 0 0 100%; min-width: 0; min-height: 156px; flex-direction: column; padding-top: 18px; }
+.hero-banner__category { align-self: flex-start; padding: 5px 10px; border-radius: 999px; background: var(--ac-a20); color: var(--ac); font-size: 10px; font-weight: 700; }
+.hero-banner__slide h3 { display: -webkit-box; overflow: hidden; min-height: 50px; margin: 12px 0 0; font-size: 17px; line-height: 1.45; letter-spacing: -.035em; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.hero-banner__slide p { display: -webkit-box; overflow: hidden; min-height: 38px; margin: 9px 0 0; color: var(--on-dark-2); font-size: 11.5px; line-height: 1.65; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.hero-banner__foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 16px; }
+.hero-banner__foot time { color: var(--on-dark-3); font-family: var(--ff-num); font-variant-numeric: tabular-nums; font-size: 10px; }
+.hero-banner__foot a { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 5px; padding: 8px 12px; border: 1px solid var(--on-dark-bd2); border-radius: 9px; background: var(--on-dark-fill); font-size: 11px; font-weight: 700; white-space: nowrap; }
+.hero-banner__foot a:hover { border-color: var(--ac-a60); background: var(--ac-a20); }
+.hero-banner__controls { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; padding-top: 15px; border-top: 1px solid var(--on-dark-bd3); }
+.hero-banner__dots { display: flex; align-items: center; gap: 6px; }
+/* 점 표시기: 겉모습은 7px 이되 터치 타깃은 24px 를 확보한다(WCAG 2.5.8). */
+.hero-banner__dots button { position: relative; width: 7px; height: 7px; min-width: 0; min-height: 0; padding: 0; border: 0; border-radius: var(--rd-pill); background: var(--on-dark-fill3); transition: width var(--motion) ease, background var(--motion) ease; }
+.hero-banner__dots button::before { position: absolute; top: 50%; left: 50%; width: var(--tap); height: var(--tap); content: ""; transform: translate(-50%, -50%); }
+.hero-banner__dots button.is-active { width: 20px; background: var(--ac); }
+.hero-banner__buttons { display: flex; align-items: center; gap: 4px; }
+.hero-banner__buttons button { display: grid; width: 28px; height: 28px; place-items: center; border: 1px solid var(--on-dark-bd2); border-radius: 8px; background: var(--on-dark-fill2); color: var(--bg); }
+.hero-banner__buttons button:hover { border-color: var(--ac-a60); background: var(--ac-a20); }
+.hero__search { position: absolute; z-index: 2; right: 58px; bottom: 32px; left: 58px; display: flex; height: 66px; align-items: center; gap: 14px; padding: 0 10px 0 22px; border: 1px solid var(--on-dark-bd); border-radius: 17px; background: var(--glass); color: var(--tx2); box-shadow: 0 13px 36px rgba(14,23,18,.18); backdrop-filter: blur(12px); }
+.hero__search input { min-width: 0; flex: 1; border: 0; background: transparent; color: var(--tx1); font-size: 14px; }
+.hero__search button { height: 46px; padding: 0 22px; border: 0; border-radius: 11px; background: var(--overlay-ink); color: var(--bg); font-size: 12px; font-weight: 700; }
+.home-section { padding-top: 64px; padding-bottom: 68px; }
+.public-stats { background: var(--bg); }
+.disclosure__grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+.news { padding: 64px 0 70px; background: var(--bg-band); }
+.news__grid { display: grid; grid-template-columns: .85fr 1.3fr; gap: 16px; }
+.briefing-card { grid-row: span 2; display: flex; flex-direction: column; padding: 28px; border-radius: 21px; background: var(--dg); color: var(--bg); }
+.briefing__top { display: flex; align-items: center; justify-content: space-between; color: var(--on-dark-2); font-size: 11px; }
+.briefing__top span { display: inline-flex; align-items: center; gap: 6px; color: var(--ac); font-weight: 700; }
+.briefing-card h2 { margin: 26px 0 0; font-size: 25px; line-height: 1.4; letter-spacing: -.045em; }
+.briefing-card > p { margin: 14px 0 0; color: var(--on-dark-2); font-size: 12px; line-height: 1.75; }
+.briefing-card > a { display: inline-flex; align-self: flex-start; align-items: center; gap: 7px; margin-top: auto; padding-top: 26px; font-size: 11px; font-weight: 700; }
+.report { background: var(--bg); }
+.report__grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+.personal { padding: 60px 0 64px; background: var(--dg); color: var(--bg); }
+.personal__inner { display: grid; grid-template-columns: .85fr 1.6fr; gap: 34px; align-items: center; }
+.personal__intro h2 { margin: 18px 0 0; font-size: 26px; line-height: 1.4; letter-spacing: -.045em; }
+.personal__intro > p { margin: 12px 0 22px; color: var(--on-dark-2); font-size: 12px; line-height: 1.75; }
+.personal__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+
+@media (max-width: 1279px) {
+  .hero__inner { grid-template-columns: minmax(0,1fr) 318px; gap: 30px; padding-inline: 46px; }
+  .personal__inner { grid-template-columns: 1fr; gap: 28px; }
+}
+
+@media (max-width: 900px) {
+  .hero__card { min-height: 560px; }
+  .hero__inner { grid-template-columns: minmax(0,1fr); gap: 30px; padding: 52px 38px 122px; }
+  .hero-banner { max-width: 520px; }
+  .hero__search { right: 28px; bottom: 26px; left: 28px; }
+  .disclosure__grid { grid-template-columns: 1fr; }
+  .news__grid { grid-template-columns: 1fr; }
+  .briefing-card { grid-row: auto; }
+  .personal__grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .hero { padding-top: 12px; }
+  .hero__card { width: calc(100% - 16px); min-height: 620px; border-radius: 20px; }
+  .hero__background { background-position: 64% center; }
+  .hero__overlay { background: linear-gradient(90deg, rgba(24,38,33,.94), rgba(24,38,33,.6)); }
+  .hero__inner { gap: 24px; padding: 42px 22px 104px; }
+  .hero-banner { max-width: none; padding: 17px; }
+  .hero-banner__slide h3 { font-size: 15px; }
+  .hero__kicker { font-size: 10px; }
+  .hero__content h1 { font-size: 29px; }
+  .hero__content p { font-size: 12px; }
+  .desktop-break { display: none; }
+  .hero__search { right: 17px; bottom: 18px; left: 17px; height: 58px; padding-left: 15px; }
+  .hero__search input { font-size: 11px; }
+  .hero__search button { height: 40px; padding: 0 13px; font-size: 10px; }
+  .home-section { padding-top: 48px; padding-bottom: 52px; }
+  .news { padding-block: 48px; }
+  .personal { padding-block: 48px; }
+  .personal__intro h2 { font-size: 22px; }
+}

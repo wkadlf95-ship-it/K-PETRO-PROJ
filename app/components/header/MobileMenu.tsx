@@ -1,4 +1,4 @@
-import { LogIn } from "lucide-react";
+import { LogIn } from "../../icons";
 import { publicNavItems } from "../../config/publicNav";
 import { RouteLink } from "../common/RouteLink";
 
@@ -8,7 +8,7 @@ export function MobileMenu({ activeTop }: { activeTop: string }) {
   return (
     <div className="mobile-menu">
       <div className="portal-container">
-        <div className="mobile-account">
+        <div className="mobile__account">
           <LogIn size={17} />
           <RouteLink to="/member/login">로그인</RouteLink>
           <span>·</span>

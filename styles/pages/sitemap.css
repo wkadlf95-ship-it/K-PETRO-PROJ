@@ -1,0 +1,14 @@
+/* pages/sitemap.css — 사이트맵 배치 */
+
+.sitemap__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.sitemap__block { padding: 24px 22px; border: 1px solid var(--bd); border-radius: 17px; background: var(--bg); }
+.sitemap__block h2 { margin: 0 0 16px; padding-bottom: 12px; border-bottom: 2px solid var(--dg); font-size: 16px; letter-spacing: -.035em; }
+.sitemap__group { margin-bottom: 16px; }
+.sitemap__group > strong { display: block; margin-bottom: 7px; color: var(--tx2); font-size: 12px; }
+.sitemap__group ul { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.sitemap__group li a { display: block; padding: 4px 0; color: var(--tx3); font-size: 11.5px; }
+.sitemap__group li a:hover { color: var(--ac-dark); text-decoration: underline; }
+
+@media (max-width: 900px) {
+  .sitemap__grid { grid-template-columns: repeat(2,1fr); }
+}

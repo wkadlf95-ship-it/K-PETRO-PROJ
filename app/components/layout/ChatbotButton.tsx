@@ -1,4 +1,4 @@
-import { ExternalLink, Headphones, HelpCircle, X } from "lucide-react";
+import { ExternalLink, Headphones, HelpCircle, X } from "../../icons";
 import { useState } from "react";
 import { MascotGuide } from "../common/MascotGuide";
 import { RouteLink } from "../common/RouteLink";
@@ -9,10 +9,10 @@ export function ChatbotButton() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="chatbot-wrap">
+    <div className="chatbot__wrap">
       {open && (
-        <div className="chatbot-panel" role="dialog" aria-label="챗봇 상담 연계">
-          <div className="chatbot-head">
+        <div className="chatbot__panel" role="dialog" aria-label="챗봇 상담 연계">
+          <div className="chatbot__head">
             <MascotGuide compact />
             <div>
               <strong>챗봇 상담 연계</strong>
@@ -21,13 +21,13 @@ export function ChatbotButton() {
             <button type="button" onClick={() => setOpen(false)} aria-label="닫기"><X size={18} /></button>
           </div>
 
-          <div className="chatbot-body">
+          <div className="chatbot__body">
             <p>
               본 화면은 신규 AI 챗봇이 아니라 기존 석유관리원 챗봇을 연결하기 위한 임시 진입점입니다.
               연계 방식은 URL, API, 임베드 중 추후 확정됩니다.
             </p>
-            <div className="chatbot-actions">
-              <a href={LEGACY_CHATBOT_URL} className="chatbot-primary-link">
+            <div className="chatbot__actions">
+              <a href={LEGACY_CHATBOT_URL} className="chatbot__primary-link">
                 기존 챗봇 열기 <ExternalLink size={14} />
               </a>
               <RouteLink to="/oil/support/search">
@@ -39,12 +39,12 @@ export function ChatbotButton() {
             </div>
           </div>
 
-          <div className="chatbot-note">
+          <div className="chatbot__note">
             1차 구축 범위: 기존 챗봇 화면 연계 / AICC·민원 자동분류는 확장 검토
           </div>
         </div>
       )}
-      <button className="chatbot-button" type="button" onClick={() => setOpen(!open)} aria-expanded={open}>
+      <button className="chatbot__button" type="button" onClick={() => setOpen(!open)} aria-expanded={open}>
         <MascotGuide compact />
         <span>챗봇 상담</span>
       </button>

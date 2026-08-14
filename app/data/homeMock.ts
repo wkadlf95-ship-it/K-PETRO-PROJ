@@ -93,7 +93,8 @@ export type HeroSlide = {
   summary: string;
   date: string;
   path: string;
-  image: string;
+  /** 배경 무늬 키. pages/home.css 의 .hero__bg--* 규칙이 그린다 */
+  scene: "quality" | "data" | "briefing" | "report";
 };
 
 /** Hero 배너 슬라이드: 공지사항과 석유 브리핑을 광고형 배너로 순환 노출합니다. */
@@ -104,7 +105,7 @@ export const heroSlides: HeroSlide[] = [
     summary: "최근 30일 품질검사 1,248건 중 공개 가능 항목을 조회할 수 있습니다.",
     date: "2026.08.14",
     path: "/oil/quality/result",
-    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1800&q=85",
+    scene: "quality",
   },
   {
     category: "공공데이터",
@@ -112,7 +113,7 @@ export const heroSlides: HeroSlide[] = [
     summary: "개방 데이터 38종의 제공 항목과 갱신주기가 일부 변경되었습니다.",
     date: "2026.08.11",
     path: "/disclosure/opendata/catalog",
-    image: "https://images.unsplash.com/photo-1558298248-e70b2375af4a?auto=format&fit=crop&w=1800&q=85",
+    scene: "data",
   },
   {
     category: "오늘의 브리핑",
@@ -120,7 +121,7 @@ export const heroSlides: HeroSlide[] = [
     summary: "주요 산유국 감산 기조와 국제유가 등락 요인을 3분 안에 정리했습니다.",
     date: "2026.08.14",
     path: "/oil/briefing/today",
-    image: "https://images.unsplash.com/photo-1602499211425-b2b286df70fa?auto=format&fit=crop&w=1800&q=85",
+    scene: "briefing",
   },
   {
     category: "신고/포상",
@@ -128,6 +129,6 @@ export const heroSlides: HeroSlide[] = [
     summary: "가짜석유·정량미달 신고 시 지급되는 포상 기준과 절차를 확인하세요.",
     date: "2026.08.07",
     path: "/oil/report/guide",
-    image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1800&q=85",
+    scene: "report",
   },
 ];

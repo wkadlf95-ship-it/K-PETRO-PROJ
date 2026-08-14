@@ -14,12 +14,12 @@ export function CalculatorView({ title }: { title: string }) {
   }, [efficiency, distance]);
 
   return (
-    <div className="calculator-view">
-      <p className="content-lead">
+    <div className="calculator__view">
+      <p className="content__lead">
         차종 연비와 월 주행거리를 입력하면 예상 월 주유비를 계산합니다. 실제 저장·알림 기능 제공 여부는 협의가 필요합니다.
       </p>
 
-      <form className="calculator-form" onSubmit={(event) => event.preventDefault()}>
+      <form className="calculator__form" onSubmit={(event) => event.preventDefault()}>
         <label>
           <span>연비 (km/L)</span>
           <input
@@ -38,13 +38,13 @@ export function CalculatorView({ title }: { title: string }) {
             placeholder="예: 1200"
           />
         </label>
-        <div className="calculator-result">
+        <div className="calculator__result">
           <span>{title}</span>
           <strong>{monthlyCost ? `${monthlyCost.toLocaleString()}원` : "-"}</strong>
         </div>
       </form>
 
-      <p className="content-note">
+      <p className="content__note">
         휘발유 평균가 시안 {AVERAGE_PRICE.toLocaleString()}원/L 기준의 참고용 계산입니다.
         실제 적용 시 유종 선택, 오피넷 가격 연계, 개인정보 저장 여부를 별도 확정해야 합니다.
       </p>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from "../../icons";
 import { heroSlides } from "../../data/homeMock";
 import { RouteLink } from "../common/RouteLink";
 
@@ -41,21 +41,21 @@ export function HeroBannerSlider({ index, onChange }: HeroBannerSliderProps) {
         if (event.key === "ArrowRight") { event.preventDefault(); move(1); }
       }}
     >
-      <div className="hero-banner-head">
+      <div className="hero-banner__head">
         <span>공지 · 브리핑</span>
         <strong><em>{pad(index + 1)}</em> / {pad(count)}</strong>
       </div>
 
-      <div className="hero-banner-viewport">
-        <div className="hero-banner-track" style={{ transform: `translateX(-${index * 100}%)` }}>
+      <div className="hero-banner__viewport">
+        <div className="hero-banner__track" style={{ transform: `translateX(-${index * 100}%)` }}>
           {heroSlides.map((slide, slideIndex) => {
             const current = slideIndex === index;
             return (
-              <article className="hero-banner-slide" key={slide.title} aria-hidden={!current}>
-                <span className="hero-banner-category">{slide.category}</span>
+              <article className="hero-banner__slide" key={slide.title} aria-hidden={!current}>
+                <span className="hero-banner__category">{slide.category}</span>
                 <h3>{slide.title}</h3>
                 <p>{slide.summary}</p>
-                <div className="hero-banner-foot">
+                <div className="hero-banner__foot">
                   <time>{slide.date}</time>
                   <RouteLink to={slide.path} tabIndex={current ? 0 : -1}>
                     자세히 보기 <ArrowRight size={14} />
@@ -67,8 +67,8 @@ export function HeroBannerSlider({ index, onChange }: HeroBannerSliderProps) {
         </div>
       </div>
 
-      <div className="hero-banner-controls">
-        <div className="hero-banner-dots">
+      <div className="hero-banner__controls">
+        <div className="hero-banner__dots">
           {heroSlides.map((slide, slideIndex) => (
             <button
               type="button"
@@ -80,7 +80,7 @@ export function HeroBannerSlider({ index, onChange }: HeroBannerSliderProps) {
             />
           ))}
         </div>
-        <div className="hero-banner-buttons">
+        <div className="hero-banner__buttons">
           <button type="button" onClick={() => move(-1)} aria-label="이전 배너"><ChevronLeft size={16} /></button>
           <button
             type="button"

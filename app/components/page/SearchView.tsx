@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Search } from "lucide-react";
+import { Search } from "../../icons";
 import { buildInspectionRows, searchProducts, searchRegions } from "../../data/pageMock";
 
 export function SearchView({ title }: { title: string }) {
@@ -34,7 +34,7 @@ export function SearchView({ title }: { title: string }) {
         <button type="submit"><Search size={15} /> 조회</button>
       </form>
 
-      <p className="search-count">
+      <p className="search__count">
         {submitted ? "조회" : "기본"} 결과 <strong>{filtered.length}</strong>건 · {title}
       </p>
 
@@ -47,7 +47,7 @@ export function SearchView({ title }: { title: string }) {
           </tr>
         </thead>
         <tbody>
-          {filtered.length === 0 && <tr><td colSpan={5} className="board-empty">조건에 맞는 결과가 없습니다.</td></tr>}
+          {filtered.length === 0 && <tr><td colSpan={5} className="board__empty">조건에 맞는 결과가 없습니다.</td></tr>}
           {filtered.map((row) => (
             <tr key={row.id}>
               <td>{row.id}</td>
@@ -60,7 +60,7 @@ export function SearchView({ title }: { title: string }) {
         </tbody>
       </table>
 
-      <p className="content-note">개별 사업자 상세정보는 공개하지 않으며, 공개 가능한 집계 항목만 제공합니다.</p>
+      <p className="content__note">개별 사업자 상세정보는 공개하지 않으며, 공개 가능한 집계 항목만 제공합니다.</p>
     </div>
   );
 }

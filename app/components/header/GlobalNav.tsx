@@ -18,7 +18,7 @@ export function GlobalNav({ activeTop, openMenu, onOpenChange }: GlobalNavProps)
         const isActive = currentPath.startsWith(item.path) || item.children?.some((child) => currentPath.startsWith(child.path));
 
         return (
-          <div className="global-nav-item" key={item.label} onMouseLeave={() => onOpenChange(null)}>
+          <div className="global-nav__item" key={item.label} onMouseLeave={() => onOpenChange(null)}>
             <button
               type="button"
               className={isActive || activeTop === itemTop && itemTop !== "oil" ? "is-active" : ""}

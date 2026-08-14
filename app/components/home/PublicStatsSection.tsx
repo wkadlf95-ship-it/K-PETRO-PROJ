@@ -1,4 +1,4 @@
-import { ArrowRight, Info, Ship, TriangleAlert } from "lucide-react";
+import { ArrowRight, Info, Ship, TriangleAlert } from "../../icons";
 import { anomalySummary, crudeTransport, priceTrend } from "../../data/statsMock";
 import { DistributionDonut } from "../charts/DistributionDonut";
 import { PriceTrendChart } from "../charts/PriceTrendChart";
@@ -16,16 +16,16 @@ function StatsCard({
 }) {
   return (
     <article className={`stats-card${wide ? " stats-card-wide" : ""}`}>
-      <header className="stats-card-head">
+      <header className="stats-card__head">
         <div>
           <h3>{title}</h3>
           <p>{note}</p>
         </div>
-        {badge && <span className="stats-badge">{badge}</span>}
+        {badge && <span className="stats-card__badge">{badge}</span>}
       </header>
       {children}
       {more && (
-        <RouteLink to={more.path} className="stats-more">{more.label} <ArrowRight size={15} /></RouteLink>
+        <RouteLink to={more.path} className="stats-card__more">{more.label} <ArrowRight size={15} /></RouteLink>
       )}
     </article>
   );
@@ -39,7 +39,7 @@ function CrudeTransportCard() {
       badge={crudeTransport.updatedAt}
       more={{ label: "원유수송 통계 보기", path: "/oil/distribution/crude" }}
     >
-      <dl className="transport-stats">
+      <dl className="transport__stats">
         {crudeTransport.stats.map((stat) => (
           <div key={stat.label}>
             <dt>{stat.label}</dt>
@@ -47,12 +47,12 @@ function CrudeTransportCard() {
           </div>
         ))}
       </dl>
-      <div className="transport-origins">
+      <div className="transport__origins">
         <strong>주요 도입국</strong>
         {crudeTransport.origins.map((origin) => (
-          <div className="origin-row" key={origin.country}>
+          <div className="origin__row" key={origin.country}>
             <span>{origin.country}</span>
-            <div className="origin-bar" aria-hidden="true"><i style={{ width: `${origin.share}%` }} /></div>
+            <div className="origin__bar" aria-hidden="true"><i style={{ width: `${origin.share}%` }} /></div>
             <em>{origin.share}%</em>
           </div>
         ))}
@@ -67,18 +67,18 @@ function AnomalyCard() {
       title={<><TriangleAlert size={17} aria-hidden="true" /> 이상징후 요약 공개</>}
       note={`공개 가능 요약 ${anomalySummary.openCount}건`}
     >
-      <ul className="anomaly-list">
+      <ul className="anomaly__list">
         {anomalySummary.items.map((item) => (
           <li key={item.title}>
             <div>
               <strong>{item.title}</strong>
               <p>{item.note}</p>
             </div>
-            <span className="anomaly-level">{item.level}</span>
+            <span className="anomaly__level">{item.level}</span>
           </li>
         ))}
       </ul>
-      <p className="anomaly-restrict">
+      <p className="anomaly__restrict">
         <Info size={14} aria-hidden="true" />
         <span>{anomalySummary.restrictions.join(" · ")}는 공개하지 않습니다.</span>
       </p>
@@ -88,7 +88,7 @@ function AnomalyCard() {
 
 export function PublicStatsSection() {
   return (
-    <section className="public-stats-wrap" aria-labelledby="public-stats-title">
+    <section className="public-stats" aria-labelledby="public-stats-title">
       <div className="portal-container home-section">
         <div className="section-heading">
           <div>
@@ -98,7 +98,7 @@ export function PublicStatsSection() {
           <p>집계 통계 중심으로 제공하며, 비공개 대상 정보는 포함하지 않습니다.</p>
         </div>
 
-        <div className="stats-grid">
+        <div className="stats__grid">
           <StatsCard
             wide
             title="가격 추이"

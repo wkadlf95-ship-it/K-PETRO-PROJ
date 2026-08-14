@@ -1,0 +1,163 @@
+/* ─────────────────────────────────────────────────────────────
+   portlet.css — 위젯 대시보드 (그리드 · 박스 · 이동 모드 · 팔레트)
+
+   배치는 스크립트가 element.style 에 좌표를 써 넣지 않는다.
+   박스가 자기 좌표를 data-col / data-row 로 들고 있고 아래 규칙이 배치한다.
+   드래그 중의 미리보기 상자도 같은 규칙을 써서 결과가 어긋나지 않는다.
+   ───────────────────────────────────────────────────────────── */
+
+.pt-page { padding-top: 22px; }
+
+/* ── 격자 밖: 요약 카드 ──
+   위젯으로 두면 사용자가 빼는 순간 시세가 화면에서 사라진다. */
+.pt-kpi { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0 0 14px; padding: 0; list-style: none; }
+.pt-kpi li { padding: 16px 18px; border: 1px solid var(--bd); border-radius: var(--rd-4); background: var(--bg-card-soft); }
+.pt-kpi__label { display: block; color: var(--tx3); font-size: var(--fs-2); }
+.pt-kpi__value { display: block; margin: 6px 0 8px; font-family: var(--ff-num); font-size: var(--fs-11); font-weight: var(--fw-b); letter-spacing: -.04em; }
+.pt-kpi__value em { margin-left: 4px; font-family: var(--ff); font-size: var(--fs-2); font-style: normal; font-weight: var(--fw-s); color: var(--tx3); }
+
+/* ── 격자 밖: 조건 상자 ──
+   화면 전체에 하나만 둔다. 상자마다 두면 한 화면에서 서로 다른 유종을 보게 된다. */
+.pt-filter { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; margin-bottom: 18px; padding: 16px 18px; border: 1px solid var(--bd); border-radius: var(--rd-4); background: var(--bg-panel); }
+.pt-filter__title { display: inline-flex; align-items: center; gap: 6px; width: 100%; margin: 0; color: var(--tx2); font-size: var(--fs-4); font-weight: var(--fw-b); }
+.pt-filter__field { display: flex; flex-direction: column; gap: 6px; }
+.pt-filter__field label { color: var(--tx2); font-size: var(--fs-3); font-weight: var(--fw-s); }
+.pt-filter__field select { min-width: 140px; padding: 10px 12px; font-size: var(--fs-5); }
+.pt-filter__note { flex: 1; min-width: 220px; margin: 0; color: var(--tx3); font-size: var(--fs-2); text-align: right; }
+
+/* ── 도구 막대 ── */
+.pt__bar { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 12px; }
+.pt__bar h2 { margin: 0; font-size: var(--fs-8); letter-spacing: -.035em; }
+.pt__bar-actions { display: flex; gap: 6px; }
+.pt__toggle, .pt__action { display: inline-flex; align-items: center; gap: 6px; padding: 9px 13px; border: 1px solid var(--bd-ui); border-radius: var(--rd-2); background: var(--bg); color: var(--tx2); font-size: var(--fs-3); font-weight: var(--fw-s); }
+.pt__toggle:hover, .pt__action:hover { border-color: var(--ac-dark); background: var(--ac-bg2); }
+.pt__toggle.is-active { border-color: var(--dg); background: var(--dg); color: var(--tx-inv); }
+
+/* ── 격자 ──
+   2열 고정. 서버가 col 을 0~1 로 깎아 저장하므로 3열 이상으로 그리면
+   저장할 때마다 배치가 조금씩 어긋난다.
+   확대 시 가로 스크롤이 생기지 않도록 고정폭 대신 minmax(0, 1fr) 을 쓴다. */
+.pt-grid { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: min-content; gap: 14px; }
+
+/* 열 배치 */
+.pt-grid > [data-col="0"] { grid-column-start: 1; }
+.pt-grid > [data-col="1"] { grid-column-start: 2; }
+/* 두 열을 모두 차지하는 위젯 */
+.pt-grid > [data-span="2"] { grid-column: 1 / -1; }
+
+/* 행 배치 — layoutStore.ts 의 ROWS 와 개수가 일치해야 한다 (0~19) */
+.pt-grid > [data-row="0"] { grid-row-start: 1; }
+.pt-grid > [data-row="1"] { grid-row-start: 2; }
+.pt-grid > [data-row="2"] { grid-row-start: 3; }
+.pt-grid > [data-row="3"] { grid-row-start: 4; }
+.pt-grid > [data-row="4"] { grid-row-start: 5; }
+.pt-grid > [data-row="5"] { grid-row-start: 6; }
+.pt-grid > [data-row="6"] { grid-row-start: 7; }
+.pt-grid > [data-row="7"] { grid-row-start: 8; }
+.pt-grid > [data-row="8"] { grid-row-start: 9; }
+.pt-grid > [data-row="9"] { grid-row-start: 10; }
+.pt-grid > [data-row="10"] { grid-row-start: 11; }
+.pt-grid > [data-row="11"] { grid-row-start: 12; }
+.pt-grid > [data-row="12"] { grid-row-start: 13; }
+.pt-grid > [data-row="13"] { grid-row-start: 14; }
+.pt-grid > [data-row="14"] { grid-row-start: 15; }
+.pt-grid > [data-row="15"] { grid-row-start: 16; }
+.pt-grid > [data-row="16"] { grid-row-start: 17; }
+.pt-grid > [data-row="17"] { grid-row-start: 18; }
+.pt-grid > [data-row="18"] { grid-row-start: 19; }
+.pt-grid > [data-row="19"] { grid-row-start: 20; }
+
+/* ── 위젯 상자 ── */
+.pt-box { display: flex; min-width: 0; flex-direction: column; overflow: hidden; border: 1px solid var(--bd); border-radius: var(--rd-5); background: var(--bg); }
+.pt-box__head { display: flex; align-items: flex-start; gap: 10px; padding: 18px 20px 14px; border-bottom: 1px solid var(--bd2); }
+.pt-box__head > div { flex: 1; min-width: 0; }
+.pt-box__head h3 { margin: 0; font-size: var(--fs-7); letter-spacing: -.03em; }
+.pt-box__head p { margin: 5px 0 0; color: var(--tx3); font-size: var(--fs-2); }
+.pt-box__body { padding: 16px 20px 20px; }
+.pt-box__grip { flex: 0 0 auto; margin-top: 3px; color: var(--ic); }
+.pt-box__remove { display: grid; width: var(--tap); height: var(--tap); flex: 0 0 auto; place-items: center; border: 1px solid var(--bd-ui); border-radius: var(--rd-1); background: var(--bg); color: var(--tx2); }
+.pt-box__remove:hover { border-color: var(--er-ink); background: var(--er-bg); color: var(--er-ink); }
+
+/* ── 이동 모드 ── */
+.pt-grid.is-moving > .pt-box { border-style: dashed; border-color: var(--ac-dark); cursor: grab; }
+.pt-grid.is-moving > .pt-box:active { cursor: grabbing; }
+
+/* 놓을 칸. 이동 모드에서 드래그 중일 때만 깔린다. */
+.pt-cell { min-height: 60px; border: 1px dashed var(--bd); border-radius: var(--rd-4); }
+
+/* 미리보기 상자 — 위 배치 규칙을 그대로 쓴다 */
+.pt-preview { min-height: 60px; border: 2px solid var(--ac-dark); border-radius: var(--rd-4); background: var(--ac-bg); }
+
+/* ── 팔레트 ── */
+.pt-palette { margin-top: 16px; padding: 18px 20px; border: 1px solid var(--bd); border-radius: var(--rd-5); background: var(--bg-panel); }
+.pt-palette h3 { margin: 0 0 12px; font-size: var(--fs-6); letter-spacing: -.03em; }
+.pt-palette__empty { margin: 0; color: var(--tx3); font-size: var(--fs-4); }
+.pt-palette ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; }
+.pt-palette button { display: grid; width: 100%; grid-template-columns: auto 1fr; gap: 4px 7px; padding: 12px 14px; border: 1px solid var(--bd-ui); border-radius: var(--rd-4); background: var(--bg); color: var(--tx1); font-size: var(--fs-4); font-weight: var(--fw-s); text-align: left; }
+.pt-palette button:hover { border-color: var(--ac-dark); background: var(--ac-bg2); }
+.pt-palette button span { grid-column: 2; color: var(--tx3); font-size: var(--fs-1); font-weight: var(--fw-r); }
+
+/* ── 위젯 안쪽 공용 부품 ── */
+.pt-table { border-top: 1px solid var(--bd2); }
+.pt-table th, .pt-table td { padding: 10px 8px; border-bottom: 1px solid var(--bd2); font-size: var(--fs-4); text-align: right; }
+.pt-table thead th { background: var(--bg-panel); color: var(--tx2); font-size: var(--fs-2); text-align: right; }
+.pt-table th[scope="row"], .pt-table thead th:first-child { text-align: left; }
+.pt-table--compact th, .pt-table--compact td { padding: 8px 6px; font-size: var(--fs-2); }
+.pt-table--bars td:last-child { width: 40%; }
+
+/* 막대 길이는 5% 단위 규칙이 정한다. 스크립트가 style 을 건드리지 않는다. */
+.pt-bar { display: block; height: 8px; border-radius: var(--rd-pill); background: var(--chart-1); }
+.pt-bar[data-pct="0"] { width: 0; }
+.pt-bar[data-pct="5"] { width: 5%; }
+.pt-bar[data-pct="10"] { width: 10%; }
+.pt-bar[data-pct="15"] { width: 15%; }
+.pt-bar[data-pct="20"] { width: 20%; }
+.pt-bar[data-pct="25"] { width: 25%; }
+.pt-bar[data-pct="30"] { width: 30%; }
+.pt-bar[data-pct="35"] { width: 35%; }
+.pt-bar[data-pct="40"] { width: 40%; }
+.pt-bar[data-pct="45"] { width: 45%; }
+.pt-bar[data-pct="50"] { width: 50%; }
+.pt-bar[data-pct="55"] { width: 55%; }
+.pt-bar[data-pct="60"] { width: 60%; }
+.pt-bar[data-pct="65"] { width: 65%; }
+.pt-bar[data-pct="70"] { width: 70%; }
+.pt-bar[data-pct="75"] { width: 75%; }
+.pt-bar[data-pct="80"] { width: 80%; }
+.pt-bar[data-pct="85"] { width: 85%; }
+.pt-bar[data-pct="90"] { width: 90%; }
+.pt-bar[data-pct="95"] { width: 95%; }
+.pt-bar[data-pct="100"] { width: 100%; }
+
+/* 증감 — 색만으로 알리지 않고 ▲▼ 기호와 낱말을 함께 둔다 */
+.pt-delta { display: inline-flex; align-items: center; gap: 4px; font-size: var(--fs-2); font-weight: var(--fw-s); white-space: nowrap; }
+.pt-delta--up { color: var(--up); }
+.pt-delta--down { color: var(--dn); }
+.pt-delta--flat { color: var(--flat); }
+
+.pt-delta__list { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.pt-delta__list li { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 10px; padding: 9px 11px; border-radius: var(--rd-2); background: var(--bg-panel); font-size: var(--fs-4); }
+.pt-delta__list strong { font-family: var(--ff-num); font-size: var(--fs-5); }
+
+.pt-notice__list { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
+.pt-notice__list li { display: grid; grid-template-columns: 92px 1fr; gap: 10px; padding: 11px 2px; border-bottom: 1px solid var(--bd2); font-size: var(--fs-4); }
+.pt-notice__list li:last-child { border-bottom: 0; }
+.pt-notice__list time { color: var(--tx3); font-family: var(--ff-num); font-size: var(--fs-2); }
+
+@media (max-width: 900px) {
+  .pt-kpi { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pt-palette ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pt-filter__note { text-align: left; }
+}
+
+@media (max-width: 640px) {
+  /* 한 열로 접으면 data-col 배치가 의미를 잃으므로 순서대로 흐르게 둔다 */
+  .pt-grid { grid-template-columns: minmax(0, 1fr); }
+  .pt-grid > [data-col="0"], .pt-grid > [data-col="1"], .pt-grid > [data-span="2"] { grid-column: 1; }
+  .pt-grid > .pt-box { grid-row-start: auto; }
+  .pt-cell, .pt-preview { display: none; }
+  .pt-kpi { grid-template-columns: minmax(0, 1fr); }
+  .pt-palette ul { grid-template-columns: minmax(0, 1fr); }
+  .pt__bar { align-items: flex-start; flex-direction: column; }
+  .pt-notice__list li { grid-template-columns: minmax(0, 1fr); gap: 3px; }
+}

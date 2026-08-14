@@ -1,12 +1,12 @@
 import { Fragment, useMemo, useState } from "react";
-import { ChevronLeft, ChevronRight, Download, Paperclip, Search } from "lucide-react";
+import { ChevronLeft, ChevronRight, Download, Paperclip, Search } from "../../icons";
 import { buildBoardRows, type BoardRow } from "../../data/pageMock";
 
 const PAGE_SIZE = 10;
 
 function BoardDetail({ row, title }: { row: BoardRow; title: string }) {
   return (
-    <div className="board-detail">
+    <div className="board__detail">
       <h3>{row.title}</h3>
       <dl>
         <div><dt>담당부서</dt><dd>{row.dept}</dd></div>
@@ -18,7 +18,7 @@ function BoardDetail({ row, title }: { row: BoardRow; title: string }) {
         관련 법령, 문의처가 이 영역에 표시됩니다.
       </p>
       {row.file && (
-        <a className="board-file" href="#download" onClick={(e) => e.preventDefault()}>
+        <a className="board__file" href="#download" onClick={(e) => e.preventDefault()}>
           <Download size={15} /> {row.title}.pdf <span>(1.2MB)</span>
         </a>
       )}
@@ -28,7 +28,7 @@ function BoardDetail({ row, title }: { row: BoardRow; title: string }) {
 
 function BoardPager({ current, total, onChange }: { current: number; total: number; onChange: (n: number) => void }) {
   return (
-    <nav className="board-pager" aria-label="페이지 이동">
+    <nav className="board__pager" aria-label="페이지 이동">
       <button type="button" onClick={() => onChange(Math.max(1, current - 1))} disabled={current === 1} aria-label="이전 페이지">
         <ChevronLeft size={16} />
       </button>
@@ -72,9 +72,9 @@ export function BoardView({ title }: { title: string }) {
 
   return (
     <div className="board">
-      <div className="board-top">
+      <div className="board__top">
         <p>총 <strong>{filtered.length}</strong>건 · {current}/{totalPages} 페이지</p>
-        <form className="board-search" onSubmit={submit}>
+        <form className="board__search" onSubmit={submit}>
           <label className="sr-only" htmlFor="board-field">검색 조건</label>
           <select id="board-field" value={field} onChange={(e) => setField(e.target.value)}>
             <option value="title">제목</option>
@@ -98,7 +98,7 @@ export function BoardView({ title }: { title: string }) {
           </tr>
         </thead>
         <tbody>
-          {pageRows.length === 0 && <tr><td colSpan={5} className="board-empty">검색 결과가 없습니다.</td></tr>}
+          {pageRows.length === 0 && <tr><td colSpan={5} className="board__empty">검색 결과가 없습니다.</td></tr>}
           {pageRows.map((row) => (
             <Fragment key={row.no}>
               <tr>
@@ -114,7 +114,7 @@ export function BoardView({ title }: { title: string }) {
                 <td className="col-views">{row.views.toLocaleString()}</td>
               </tr>
               {openRow === row.no && (
-                <tr className="board-detail-row">
+                <tr className="board__detail-row">
                   <td colSpan={5}><BoardDetail row={row} title={title} /></td>
                 </tr>
               )}

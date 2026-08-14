@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Bot, LayoutGrid, Menu, Search, UserRound, X } from "lucide-react";
+import { Bot, LayoutGrid, Menu, Search, UserRound, X } from "../../icons";
 import { AllMenuPanel } from "../header/AllMenuPanel";
 import { GlobalNav } from "../header/GlobalNav";
 import { HeaderSearch } from "../header/HeaderSearch";
@@ -47,7 +47,7 @@ export function Header({ currentPath }: { currentPath: string }) {
       <UtilityBar />
 
       <div className="main-header">
-        <div className="portal-container main-header-inner">
+        <div className="portal-container main-header__inner">
           <BrandLogo />
           <GlobalNav activeTop={activeTop} openMenu={openMenu} onOpenChange={setOpenMenu} />
 
@@ -61,7 +61,7 @@ export function Header({ currentPath }: { currentPath: string }) {
             <RouteLink to="/oil/briefing/today" className="chat-link"><Bot size={17} /> 챗봇</RouteLink>
             <button
               type="button"
-              className="icon-action all-menu-toggle"
+              className="icon-action"
               aria-label="전체 메뉴"
               aria-expanded={allMenuOpen}
               onClick={() => setAllMenuOpen(!allMenuOpen)}

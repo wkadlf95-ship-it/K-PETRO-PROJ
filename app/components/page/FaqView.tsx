@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ChevronDown, Search } from "lucide-react";
+import { ChevronDown, Search } from "../../icons";
 import { faqCategories, faqItems } from "../../data/pageMock";
 
 export function FaqView() {
@@ -18,8 +18,8 @@ export function FaqView() {
   );
 
   return (
-    <div className="faq-view">
-      <form className="faq-search" onSubmit={(e) => e.preventDefault()}>
+    <div className="faq__view">
+      <form className="faq__search" onSubmit={(e) => e.preventDefault()}>
         <Search size={17} aria-hidden="true" />
         <input
           value={keyword}
@@ -29,7 +29,7 @@ export function FaqView() {
         />
       </form>
 
-      <div className="faq-tabs" role="tablist" aria-label="질문 분류">
+      <div className="faq__tabs" role="tablist" aria-label="질문 분류">
         {faqCategories.map((item) => (
           <button
             key={item}
@@ -44,18 +44,18 @@ export function FaqView() {
         ))}
       </div>
 
-      <ul className="faq-list">
-        {list.length === 0 && <li className="faq-empty">검색 결과가 없습니다.</li>}
+      <ul className="faq__list">
+        {list.length === 0 && <li className="faq__empty">검색 결과가 없습니다.</li>}
         {list.map((item, index) => (
           <li key={item.q}>
             <button type="button" onClick={() => setOpen(open === index ? null : index)} aria-expanded={open === index}>
-              <span className="faq-q">Q</span>
+              <span className="faq__q">Q</span>
               <span>{item.q}</span>
               <ChevronDown size={17} className={open === index ? "is-open" : ""} />
             </button>
             {open === index && (
-              <div className="faq-answer">
-                <span className="faq-a">A</span>
+              <div className="faq__answer">
+                <span className="faq__a">A</span>
                 <p>{item.a}</p>
               </div>
             )}

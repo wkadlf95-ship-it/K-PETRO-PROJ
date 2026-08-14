@@ -9,7 +9,7 @@ export function GeoDataView({ slug, title }: { slug: string; title: string }) {
 
   return (
     <div className="geo-data-view">
-      <p className="content-lead">
+      <p className="content__lead">
         위치·지역 기준으로 활용 가능한 데이터를 우선 표와 목록 형태로 제공합니다.
         지도 API 연계가 확정되면 동일 데이터를 지도 화면에 연결할 수 있습니다.
       </p>
@@ -21,7 +21,7 @@ export function GeoDataView({ slug, title }: { slug: string; title: string }) {
         </thead>
         <tbody>
           {preset.rows.length === 0 && (
-            <tr><td colSpan={preset.columns.length} className="board-empty">등록된 데이터가 없습니다.</td></tr>
+            <tr><td colSpan={preset.columns.length} className="board__empty">등록된 데이터가 없습니다.</td></tr>
           )}
           {preset.rows.map((row, rowIndex) => (
             <tr key={rowIndex}>
@@ -31,7 +31,7 @@ export function GeoDataView({ slug, title }: { slug: string; title: string }) {
         </tbody>
       </table>
 
-      <p className="content-note">{preset.caption}</p>
+      <p className="content__note">{preset.caption}</p>
     </div>
   );
 }
