@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ArrowRight, Search, ShieldCheck } from "lucide-react";
-import { heroSlides } from "../../data/portalMock";
+import { heroSlides } from "../../data/homeMock";
 import { RouteLink } from "../common/RouteLink";
 import { HeroBannerSlider } from "./HeroBannerSlider";
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
-import { heroSlides } from "../../data/portalMock";
+import { heroSlides } from "../../data/homeMock";
 import { RouteLink } from "../common/RouteLink";
 
 const SLIDE_INTERVAL = 5000;

@@ -1,8 +1,8 @@
 import { ChevronRight, ExternalLink, Home, Printer, Share2 } from "lucide-react";
-import { nodePath, type ResolvedPage } from "../config/siteTree";
+import { nodePath, type ResolvedPage } from "../config/routes";
 import { RouteLink } from "../components/common/RouteLink";
-import { BoardView } from "../components/page/BoardView";
-import { ContentView, FaqView, FormView, LocationView, OrgView, SearchView, TimelineView } from "../components/page/PageTemplates";
+import { BoardView } from "../components/page";
+import { ContentView, FaqView, FormView, LocationView, OrgView, SearchView, TimelineView } from "../components/page";
 
 function PageBody({ page }: { page: ResolvedPage }) {
   const { leaf, top } = page;

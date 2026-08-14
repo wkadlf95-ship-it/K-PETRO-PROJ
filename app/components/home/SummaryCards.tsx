@@ -1,5 +1,5 @@
 import { ArrowRight, ChartPie, Fuel, Minus, Siren, TrendingDown, TrendingUp, type LucideIcon } from "lucide-react";
-import { summaryCards } from "../../data/portalMock";
+import { summaryCards } from "../../data/homeMock";
 import { RouteLink } from "../common/RouteLink";
 
 const cardIcons: Record<string, LucideIcon> = {

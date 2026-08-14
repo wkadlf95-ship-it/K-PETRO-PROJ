@@ -1,24 +1,47 @@
 import { Fragment, useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight, Download, Paperclip, Search } from "lucide-react";
+import { buildBoardRows, type BoardRow } from "../../data/pageMock";
 
 const PAGE_SIZE = 10;
 
-function buildRows(seed: string, total = 47) {
-  const suffixes = ["안내", "공고", "결과 공개", "변경 알림", "시행 안내", "모집 공고", "개정 예고", "운영 계획"];
-  const depts = ["기획조정처", "품질관리처", "유통관리처", "고객지원팀", "정보화팀", "미래기술연구소"];
-  return Array.from({ length: total }, (_, i) => {
-    const n = total - i;
-    const day = ((n * 7) % 28) + 1;
-    const month = ((n * 3) % 12) + 1;
-    return {
-      no: n,
-      title: `${seed} ${suffixes[n % suffixes.length]} (${String(month).padStart(2, "0")}월)`,
-      dept: depts[n % depts.length],
-      date: `2026.${String(month).padStart(2, "0")}.${String(day).padStart(2, "0")}`,
-      views: 120 + ((n * 37) % 1800),
-      file: n % 3 === 0,
-    };
-  });
+function BoardDetail({ row, title }: { row: BoardRow; title: string }) {
+  return (
+    <div className="board-detail">
+      <h3>{row.title}</h3>
+      <dl>
+        <div><dt>담당부서</dt><dd>{row.dept}</dd></div>
+        <div><dt>등록일</dt><dd>{row.date}</dd></div>
+        <div><dt>조회수</dt><dd>{row.views.toLocaleString()}</dd></div>
+      </dl>
+      <p>
+        본 게시물은 화면 구성을 위한 예시 데이터입니다. 실제 서비스에서는 {title} 관련 상세 내용과
+        관련 법령, 문의처가 이 영역에 표시됩니다.
+      </p>
+      {row.file && (
+        <a className="board-file" href="#download" onClick={(e) => e.preventDefault()}>
+          <Download size={15} /> {row.title}.pdf <span>(1.2MB)</span>
+        </a>
+      )}
+    </div>
+  );
+}
+
+function BoardPager({ current, total, onChange }: { current: number; total: number; onChange: (n: number) => void }) {
+  return (
+    <nav className="board-pager" aria-label="페이지 이동">
+      <button type="button" onClick={() => onChange(Math.max(1, current - 1))} disabled={current === 1} aria-label="이전 페이지">
+        <ChevronLeft size={16} />
+      </button>
+      {Array.from({ length: total }, (_, i) => i + 1).map((n) => (
+        <button key={n} type="button" className={n === current ? "is-active" : ""} aria-current={n === current} onClick={() => onChange(n)}>
+          {n}
+        </button>
+      ))}
+      <button type="button" onClick={() => onChange(Math.min(total, current + 1))} disabled={current === total} aria-label="다음 페이지">
+        <ChevronRight size={16} />
+      </button>
+    </nav>
+  );
 }
 
 export function BoardView({ title }: { title: string }) {
@@ -28,7 +51,7 @@ export function BoardView({ title }: { title: string }) {
   const [page, setPage] = useState(1);
   const [openRow, setOpenRow] = useState<number | null>(null);
 
-  const rows = useMemo(() => buildRows(title), [title]);
+  const rows = useMemo(() => buildBoardRows(title), [title]);
 
   const filtered = useMemo(() => {
     if (!query.trim()) return rows;
@@ -75,9 +98,7 @@ export function BoardView({ title }: { title: string }) {
           </tr>
         </thead>
         <tbody>
-          {pageRows.length === 0 && (
-            <tr><td colSpan={5} className="board-empty">검색 결과가 없습니다.</td></tr>
-          )}
+          {pageRows.length === 0 && <tr><td colSpan={5} className="board-empty">검색 결과가 없습니다.</td></tr>}
           {pageRows.map((row) => (
             <Fragment key={row.no}>
               <tr>
@@ -94,25 +115,7 @@ export function BoardView({ title }: { title: string }) {
               </tr>
               {openRow === row.no && (
                 <tr className="board-detail-row">
-                  <td colSpan={5}>
-                    <div className="board-detail">
-                      <h3>{row.title}</h3>
-                      <dl>
-                        <div><dt>담당부서</dt><dd>{row.dept}</dd></div>
-                        <div><dt>등록일</dt><dd>{row.date}</dd></div>
-                        <div><dt>조회수</dt><dd>{row.views.toLocaleString()}</dd></div>
-                      </dl>
-                      <p>
-                        본 게시물은 화면 구성을 위한 예시 데이터입니다. 실제 서비스에서는 {title} 관련 상세 내용과
-                        관련 법령, 문의처가 이 영역에 표시됩니다.
-                      </p>
-                      {row.file && (
-                        <a className="board-file" href="#download" onClick={(e) => e.preventDefault()}>
-                          <Download size={15} /> {row.title}.pdf <span>(1.2MB)</span>
-                        </a>
-                      )}
-                    </div>
-                  </td>
+                  <td colSpan={5}><BoardDetail row={row} title={title} /></td>
                 </tr>
               )}
             </Fragment>
@@ -120,13 +123,7 @@ export function BoardView({ title }: { title: string }) {
         </tbody>
       </table>
 
-      <nav className="board-pager" aria-label="페이지 이동">
-        <button type="button" onClick={() => setPage(Math.max(1, current - 1))} disabled={current === 1} aria-label="이전 페이지"><ChevronLeft size={16} /></button>
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
-          <button key={n} type="button" className={n === current ? "is-active" : ""} aria-current={n === current} onClick={() => setPage(n)}>{n}</button>
-        ))}
-        <button type="button" onClick={() => setPage(Math.min(totalPages, current + 1))} disabled={current === totalPages} aria-label="다음 페이지"><ChevronRight size={16} /></button>
-      </nav>
+      <BoardPager current={current} total={totalPages} onChange={setPage} />
     </div>
   );
 }

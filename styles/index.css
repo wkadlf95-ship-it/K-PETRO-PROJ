@@ -1,3 +1,9 @@
 @import './fonts.css';
-@import './portal.css';
-
+@import './base.css';
+@import './header.css';
+@import './hero.css';
+@import './home.css';
+@import './charts.css';
+@import './page.css';
+@import './footer.css';
+@import './chatbot.css';

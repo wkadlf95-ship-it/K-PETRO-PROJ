@@ -1,5 +1,6 @@
 import { ChevronRight, Home } from "lucide-react";
-import { countLeaves, nodePath, siteTree } from "../config/siteTree";
+import { countLeaves, nodePath } from "../config/routes";
+import { siteTree } from "../config/siteTree";
 import { RouteLink } from "../components/common/RouteLink";
 
 export function SitemapPage() {

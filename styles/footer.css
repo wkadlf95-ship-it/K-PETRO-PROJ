@@ -1,0 +1,36 @@
+/* 푸터 */
+.site-footer { background: #262a26; color: rgba(255,255,255,.62); }
+.footer-top { border-bottom: 1px solid rgba(255,255,255,.09); }
+.footer-links { display: flex; flex-wrap: wrap; gap: 23px; padding-block: 15px; font-size: 11px; }
+.footer-links .strong { color: #dce892; font-weight: 700; }
+.footer-links a:hover { color: #fff; }
+
+.footer-sitemap { display: grid; grid-template-columns: repeat(4, 1fr) 1.15fr; gap: 24px; padding-top: 34px; padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,.09); }
+.footer-sitemap > div > strong { display: block; margin-bottom: 13px; color: #fff; font-size: 12px; }
+.footer-sitemap ul { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.footer-sitemap li a { font-size: 11px; }
+.footer-sitemap li a:hover { color: #dce892; }
+.footer-contact strong { display: inline-flex; align-items: center; gap: 7px; }
+.footer-contact p { margin: 0 0 5px; font-size: 10px; }
+.footer-contact .footer-tel { margin-bottom: 8px; color: #dce892; font-family: Inter, sans-serif; font-size: 23px; font-weight: 700; letter-spacing: -.04em; }
+
+.footer-body { display: flex; justify-content: space-between; gap: 30px; padding-top: 27px; padding-bottom: 32px; }
+.site-footer .brand-copy strong { color: #fff; }
+.site-footer .brand-mark i:nth-child(1) { background: #d8ddd5; }
+.footer-body p { margin: 11px 0 0; font-size: 10px; line-height: 1.5; }
+.footer-body p + p { margin-top: 4px; }
+.footer-body small { display: block; margin-top: 13px; color: rgba(255,255,255,.35); font-family: Inter, sans-serif; font-size: 9px; }
+.related-sites { display: flex; align-items: flex-start; gap: 7px; }
+.related-sites a { display: inline-flex; align-items: center; gap: 7px; padding: 11px 13px; border: 1px solid rgba(255,255,255,.13); border-radius: 9px; font-size: 10px; }
+.related-sites a:hover { border-color: rgba(220,232,146,.5); color: #dce892; }
+
+@media (max-width: 900px) {
+  .footer-sitemap { grid-template-columns: repeat(2,1fr); row-gap: 26px; }
+  .related-sites { flex-direction: column; }
+}
+
+@media (max-width: 640px) {
+  .footer-sitemap { grid-template-columns: 1fr; }
+  .footer-body { flex-direction: column; }
+  .related-sites { align-items: stretch; }
+}

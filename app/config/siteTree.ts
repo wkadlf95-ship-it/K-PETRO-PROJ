@@ -328,28 +328,3 @@ export const siteTree: MenuNode[] = [
   },
 ];
 
-export type ResolvedPage = {
-  top: MenuNode;
-  mid: MenuNode;
-  leaf: MenuNode;
-  path: string;
-};
-
-/** "/about/ceo/greeting" 형태의 경로를 트리에서 찾습니다. */
-export function resolvePath(path: string): ResolvedPage | null {
-  const [, topSlug, midSlug, leafSlug] = path.split("/");
-  const top = siteTree.find((node) => node.slug === topSlug);
-  if (!top?.children) return null;
-  const mid = top.children.find((node) => node.slug === midSlug) ?? top.children[0];
-  if (!mid?.children) return null;
-  const leaf = mid.children.find((node) => node.slug === leafSlug) ?? mid.children[0];
-  return { top, mid, leaf, path: `/${top.slug}/${mid.slug}/${leaf.slug}` };
-}
-
-export function nodePath(top: MenuNode, mid: MenuNode, leaf?: MenuNode) {
-  const first = leaf ?? mid.children?.[0];
-  return `/${top.slug}/${mid.slug}/${first ? first.slug : ""}`;
-}
-
-export const countLeaves = () =>
-  siteTree.reduce((sum, top) => sum + (top.children ?? []).reduce((n, mid) => n + (mid.children?.length ?? 0), 0), 0);

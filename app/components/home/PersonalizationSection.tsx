@@ -1,5 +1,5 @@
 import { ArrowRight, Bell, LogIn, Mail, Star, UserRound, type LucideIcon } from "lucide-react";
-import { personalizationItems } from "../../data/portalMock";
+import { personalizationItems } from "../../data/sectionMock";
 import { RouteLink } from "../common/RouteLink";
 
 const icons: Record<string, LucideIcon> = { star: Star, mail: Mail, bell: Bell };

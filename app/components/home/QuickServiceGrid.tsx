@@ -10,7 +10,7 @@ import {
   Siren,
   type LucideIcon,
 } from "lucide-react";
-import { quickServices } from "../../data/portalMock";
+import { quickServices } from "../../data/homeMock";
 import { RouteLink } from "../common/RouteLink";
 
 const icons: Record<string, LucideIcon> = {

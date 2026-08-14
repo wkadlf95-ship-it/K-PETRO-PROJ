@@ -1,5 +1,5 @@
 import { ArrowRight, Award, FlaskConical, Search, ShieldCheck, Siren, type LucideIcon } from "lucide-react";
-import { reportServices } from "../../data/portalMock";
+import { reportServices } from "../../data/sectionMock";
 import { RouteLink } from "../common/RouteLink";
 
 const icons: Record<string, LucideIcon> = {

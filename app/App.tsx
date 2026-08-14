@@ -1,7 +1,7 @@
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
 import { ChatbotButton } from "./components/layout/ChatbotButton";
-import { resolvePath } from "./config/siteTree";
+import { resolvePath } from "./config/routes";
 import { useHashRoute } from "./hooks/useHashRoute";
 import { HomePage } from "./pages/HomePage";
 import { InstitutionPage } from "./pages/InstitutionPage";

@@ -1,5 +1,5 @@
 import { ArrowRight, ChevronRight, Landmark } from "lucide-react";
-import { disclosureCards } from "../../data/portalMock";
+import { disclosureCards } from "../../data/sectionMock";
 import { RouteLink } from "../common/RouteLink";
 
 export function DisclosureSection() {

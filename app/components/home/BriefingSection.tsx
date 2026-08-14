@@ -1,5 +1,5 @@
 import { ArrowRight, CalendarDays, Headset } from "lucide-react";
-import { briefingItems } from "../../data/portalMock";
+import { briefingItems } from "../../data/sectionMock";
 import { RouteLink } from "../common/RouteLink";
 
 export function BriefingSection() {
