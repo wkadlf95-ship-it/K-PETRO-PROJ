@@ -1,9 +1,23 @@
-import { FrequentServices } from "../components/home/FrequentServices";
-import { Hero } from "../components/home/Hero";
-import { NewsBriefing } from "../components/home/NewsBriefing";
-import { PortalHighlights } from "../components/home/PortalHighlights";
+import { BriefingSection } from "../components/home/BriefingSection";
+import { DisclosureSection } from "../components/home/DisclosureSection";
+import { HeroSection } from "../components/home/HeroSection";
+import { PersonalizationSection } from "../components/home/PersonalizationSection";
+import { PublicStatsSection } from "../components/home/PublicStatsSection";
+import { QuickServiceGrid } from "../components/home/QuickServiceGrid";
+import { ReportRewardSection } from "../components/home/ReportRewardSection";
+import { SummaryCards } from "../components/home/SummaryCards";
 
 export function HomePage() {
-  return <><Hero /><FrequentServices /><PortalHighlights /><NewsBriefing /></>;
+  return (
+    <main>
+      <HeroSection />
+      <SummaryCards />
+      <QuickServiceGrid />
+      <PublicStatsSection />
+      <DisclosureSection />
+      <BriefingSection />
+      <ReportRewardSection />
+      <PersonalizationSection />
+    </main>
+  );
 }
-

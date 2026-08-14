@@ -1,41 +1,58 @@
 import { useEffect, useRef, useState } from "react";
-import { Bot, ChevronDown, Globe2, LogIn, Menu, Search, UserRound, X } from "lucide-react";
-import { institutionLinks, primaryNavigation } from "../../config/navigation";
+import { Bot, Globe2, LayoutGrid, LogIn, Menu, Search, UserRound, X } from "lucide-react";
+import { nodePath, siteTree } from "../../config/siteTree";
 import { BrandLogo } from "../common/BrandLogo";
 import { RouteLink } from "../common/RouteLink";
+
+const utilityLinks = [
+  { label: "회원가입", path: "/member/join" },
+  { label: "로그인", path: "/member/login" },
+  { label: "방문신청", path: "/service/charter/facility" },
+  { label: "사이트맵", path: "/sitemap" },
+];
 
 export function Header({ currentPath }: { currentPath: string }) {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [allMenuOpen, setAllMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     setOpenMenu(null);
     setMobileOpen(false);
     setSearchOpen(false);
+    setAllMenuOpen(false);
   }, [currentPath]);
 
   useEffect(() => {
     const close = (event: MouseEvent) => {
       if (!headerRef.current?.contains(event.target as Node)) setOpenMenu(null);
     };
+    const esc = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { setOpenMenu(null); setAllMenuOpen(false); setSearchOpen(false); }
+    };
     document.addEventListener("mousedown", close);
-    return () => document.removeEventListener("mousedown", close);
+    document.addEventListener("keydown", esc);
+    return () => { document.removeEventListener("mousedown", close); document.removeEventListener("keydown", esc); };
   }, []);
+
+  const activeTop = currentPath.split("/")[1];
 
   return (
     <header ref={headerRef} className="site-header">
       <div className="utility-bar">
         <div className="portal-container utility-inner">
-          <nav aria-label="기관 메뉴" className="institution-nav">
-            {institutionLinks.filter((item) => item.enabled).map((item) => (
-              <RouteLink key={item.label} to={item.path}>{item.label}</RouteLink>
-            ))}
+          <nav aria-label="바로가기" className="institution-nav">
+            <RouteLink to="/oil/price/type">가격정보</RouteLink>
+            <RouteLink to="/oil/quality/result">품질검사 결과</RouteLink>
+            <RouteLink to="/disclosure/opendata/catalog">공공데이터</RouteLink>
+            <RouteLink to="/oil/report/guide">민원·신고</RouteLink>
           </nav>
           <div className="utility-actions">
-            <a href="https://www.kpetro.or.kr/" target="_blank" rel="noreferrer">대표 홈페이지</a>
-            <RouteLink to="/support">사업자 지원</RouteLink>
+            {utilityLinks.map((item) => (
+              <RouteLink key={item.label} to={item.path}>{item.label}</RouteLink>
+            ))}
             <button type="button"><Globe2 size={13} /> ENG</button>
           </div>
         </div>
@@ -45,41 +62,38 @@ export function Header({ currentPath }: { currentPath: string }) {
         <div className="portal-container main-header-inner">
           <BrandLogo />
 
-          <nav className="global-nav" aria-label="대국민포털 주요 메뉴">
-            {primaryNavigation.filter((item) => item.enabled).map((item) => {
-              const active = currentPath === item.path;
-              return (
-                <div className="global-nav-item" key={item.label} onMouseLeave={() => setOpenMenu(null)}>
-                  <button
-                    type="button"
-                    className={active ? "is-active" : ""}
-                    onMouseEnter={() => item.children && setOpenMenu(item.label)}
-                    onClick={() => {
-                      if (item.children) setOpenMenu(openMenu === item.label ? null : item.label);
-                      else window.location.hash = item.path;
-                    }}
-                    aria-expanded={openMenu === item.label}
-                  >
-                    {item.label}{item.children && <ChevronDown size={14} />}
-                  </button>
-                  {item.children && openMenu === item.label && (
-                    <div className="nav-dropdown">
-                      <strong>{item.label}</strong>
-                      {item.children.filter((child) => child.enabled).map((child) => (
-                        <RouteLink key={child.label} to={child.path}>{child.label}</RouteLink>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+          <nav className="global-nav" aria-label="주요 메뉴">
+            {siteTree.map((top) => (
+              <div className="global-nav-item" key={top.slug} onMouseLeave={() => setOpenMenu(null)}>
+                <button
+                  type="button"
+                  className={activeTop === top.slug ? "is-active" : ""}
+                  onMouseEnter={() => setOpenMenu(top.slug)}
+                  onClick={() => setOpenMenu(openMenu === top.slug ? null : top.slug)}
+                  aria-expanded={openMenu === top.slug}
+                >
+                  {top.label}
+                </button>
+                {openMenu === top.slug && top.children && (
+                  <div className="nav-dropdown">
+                    <strong>{top.label}</strong>
+                    {top.children.map((mid) => (
+                      <RouteLink key={mid.slug} to={nodePath(top, mid)}>{mid.label}</RouteLink>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
           </nav>
 
           <div className="header-actions">
             <button type="button" className="icon-action" aria-label="통합검색" onClick={() => setSearchOpen(!searchOpen)}><Search size={20} /></button>
-            <RouteLink to="/support" className="icon-action desktop-account" aria-label="로그인"><UserRound size={20} /></RouteLink>
-            <button type="button" className="chat-link"><Bot size={17} /> 챗봇</button>
-            <button type="button" className="menu-toggle" aria-label="전체 메뉴" onClick={() => setMobileOpen(!mobileOpen)}>{mobileOpen ? <X size={22} /> : <Menu size={22} />}</button>
+            <RouteLink to="/member/login" className="icon-action desktop-account" aria-label="로그인"><UserRound size={20} /></RouteLink>
+            <RouteLink to="/oil/briefing/today" className="chat-link"><Bot size={17} /> 챗봇</RouteLink>
+            <button type="button" className="icon-action all-menu-toggle" aria-label="전체 메뉴" aria-expanded={allMenuOpen} onClick={() => setAllMenuOpen(!allMenuOpen)}>
+              {allMenuOpen ? <X size={22} /> : <LayoutGrid size={20} />}
+            </button>
+            <button type="button" className="menu-toggle" aria-label="모바일 메뉴" onClick={() => setMobileOpen(!mobileOpen)}>{mobileOpen ? <X size={22} /> : <Menu size={22} />}</button>
           </div>
         </div>
       </div>
@@ -94,13 +108,39 @@ export function Header({ currentPath }: { currentPath: string }) {
         </div>
       )}
 
+      {allMenuOpen && (
+        <div className="all-menu-panel">
+          <div className="portal-container all-menu-grid">
+            {siteTree.map((top) => (
+              <section key={top.slug}>
+                <h2>{top.label}</h2>
+                {top.children?.map((mid) => (
+                  <div className="all-menu-group" key={mid.slug}>
+                    <strong>{mid.label}</strong>
+                    <ul>
+                      {mid.children?.map((leaf) => (
+                        <li key={leaf.slug}>
+                          {leaf.kind === "external" && leaf.href
+                            ? <a href={leaf.href} target="_blank" rel="noreferrer">{leaf.label}</a>
+                            : <RouteLink to={nodePath(top, mid, leaf)}>{leaf.label}</RouteLink>}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </section>
+            ))}
+          </div>
+        </div>
+      )}
+
       {mobileOpen && (
         <div className="mobile-menu">
           <div className="portal-container">
-            <div className="mobile-account"><LogIn size={17} /><span>로그인</span><span>·</span><span>회원가입</span></div>
+            <div className="mobile-account"><LogIn size={17} /><RouteLink to="/member/login">로그인</RouteLink><span>·</span><RouteLink to="/member/join">회원가입</RouteLink></div>
             <nav aria-label="모바일 메뉴">
-              {primaryNavigation.filter((item) => item.enabled).map((item) => (
-                <RouteLink key={item.label} to={item.path} className={currentPath === item.path ? "is-active" : ""}>{item.label}<ChevronDown size={15} /></RouteLink>
+              {siteTree.map((top) => (
+                <RouteLink key={top.slug} to={nodePath(top, top.children![0])} className={activeTop === top.slug ? "is-active" : ""}>{top.label}</RouteLink>
               ))}
             </nav>
           </div>
@@ -109,4 +149,3 @@ export function Header({ currentPath }: { currentPath: string }) {
     </header>
   );
 }
-
