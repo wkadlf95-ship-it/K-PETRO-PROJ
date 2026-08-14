@@ -73,13 +73,13 @@ const briefingRows = [
 function PageHero({ kind }: { kind: FeaturedKind }) {
   const meta = pageMeta[kind];
   return (
-    <section className={`featured-hero featured-hero-${kind}`}>
+    <section className={`featured__hero featured-hero-${kind}`}>
       <div>
         <span>{meta.eyebrow}</span>
         <h3>{meta.title}</h3>
         <p>{meta.description}</p>
       </div>
-      <div className="featured-hero-panel">
+      <div className="featured__hero-panel">
         <strong>서비스 설계 기준</strong>
         <p>{meta.notice}</p>
       </div>
@@ -89,12 +89,12 @@ function PageHero({ kind }: { kind: FeaturedKind }) {
 
 function FilterPanel({ type }: { type: "price" | "quality" }) {
   return (
-    <section className="featured-panel">
-      <div className="featured-panel-head">
+    <section className="featured__panel">
+      <div className="featured__panel-head">
         <h3>조회 조건</h3>
         <p>화면명세 작성 시 검색조건·출력정보·예외처리 기준으로 전환할 수 있는 구조입니다.</p>
       </div>
-      <div className="featured-filter-grid">
+      <div className="featured__filter-grid">
         <label>
           <span>지역</span>
           <select defaultValue="">
@@ -136,27 +136,27 @@ function FilterPanel({ type }: { type: "price" | "quality" }) {
 
 function PricePage() {
   return (
-    <div className="featured-service">
+    <div className="featured__service">
       <PageHero kind="price" />
-      <div className="featured-summary-grid">
+      <div className="featured__summary-grid">
         <article><Fuel size={22} /><span>휘발유 평균</span><strong>1,685원/L</strong><em>전일 대비 -2원</em></article>
         <article><TrendingDown size={22} /><span>경유 평균</span><strong>1,548원/L</strong><em>전일 대비 -1원</em></article>
         <article><MapPinned size={22} /><span>지역 최저가</span><strong>1,632원/L</strong><em>서울 기준 예시</em></article>
       </div>
       <FilterPanel type="price" />
-      <section className="featured-grid-two">
-        <article className="featured-panel">
-          <div className="featured-panel-head">
+      <section className="featured__grid--two">
+        <article className="featured__panel">
+          <div className="featured__panel-head">
             <h3>유종별 가격 현황</h3>
             <p>오피넷 연계 가능 항목 중심의 가격 조회 테이블입니다.</p>
           </div>
-          <table className="featured-table">
+          <table className="featured__table">
             <thead><tr><th>유종</th><th>평균가격</th><th>변동</th><th>상태</th></tr></thead>
             <tbody>{priceRows.map((row) => <tr key={row[0]}>{row.map((cell) => <td key={cell}>{cell}</td>)}</tr>)}</tbody>
           </table>
         </article>
-        <article className="featured-panel">
-          <div className="featured-panel-head">
+        <article className="featured__panel">
+          <div className="featured__panel-head">
             <h3>가격 추이 차트 영역</h3>
             <p>실제 구현 시 기간별 라인차트와 지역 비교 필터를 배치합니다.</p>
           </div>
@@ -172,20 +172,20 @@ function PricePage() {
 
 function QualityPage() {
   return (
-    <div className="featured-service">
+    <div className="featured__service">
       <PageHero kind="quality" />
-      <div className="featured-summary-grid">
+      <div className="featured__summary-grid">
         <article><ShieldCheck size={22} /><span>최근 검사 적합률</span><strong>98.7%</strong><em>공개 가능 범위 기준</em></article>
         <article><ClipboardCheck size={22} /><span>최근 검사 건수</span><strong>1,248건</strong><em>예시 데이터</em></article>
         <article><Info size={22} /><span>공개 기준</span><strong>현행 유지</strong><em>세부값은 협의 필요</em></article>
       </div>
       <FilterPanel type="quality" />
-      <section className="featured-panel">
-        <div className="featured-panel-head">
+      <section className="featured__panel">
+        <div className="featured__panel-head">
           <h3>품질검사 결과 목록</h3>
           <p>사업장 상세 민감정보는 현행 공개 기준에 맞춰 비식별/요약 정보 중심으로 표출합니다.</p>
         </div>
-        <table className="featured-table">
+        <table className="featured__table">
           <thead><tr><th>지역</th><th>대상</th><th>검사결과</th><th>검사일</th></tr></thead>
           <tbody>
             {qualityRows.map((row) => (
@@ -202,7 +202,7 @@ function QualityPage() {
 
 function ReportPage() {
   return (
-    <div className="featured-service">
+    <div className="featured__service">
       <PageHero kind="report" />
       <section className="report-flow">
         {[
@@ -218,19 +218,19 @@ function ReportPage() {
           </article>
         ))}
       </section>
-      <section className="featured-grid-two">
-        <article className="featured-panel">
-          <div className="featured-panel-head">
+      <section className="featured__grid--two">
+        <article className="featured__panel">
+          <div className="featured__panel-head">
             <h3>신고 대상 안내</h3>
             <p>국민이 신고 가능 여부를 빠르게 판단할 수 있도록 사례 중심으로 배치합니다.</p>
           </div>
-          <ul className="featured-list">
+          <ul className="featured__list">
             <li><Siren size={17} /> 가짜석유 의심 제품 판매</li>
             <li><AlertTriangle size={17} /> 정량미달 의심 주유</li>
             <li><Bell size={17} /> 사재기·고가판매 등 시장 교란 의심</li>
           </ul>
         </article>
-        <article className="featured-panel reward-card">
+        <article className="featured__panel reward-card">
           <Medal size={34} />
           <h3>신고 포상 안내</h3>
           <p>포상 대상, 지급 기준, 처리 절차는 현행 운영 기준을 유지하되 신규 포털에서는 한 화면에서 확인 가능하도록 정리합니다.</p>
@@ -243,7 +243,7 @@ function ReportPage() {
 
 function BriefingPage() {
   return (
-    <div className="featured-service">
+    <div className="featured__service">
       <PageHero kind="briefing" />
       <section className="briefing-layout">
         <article className="briefing-main">
@@ -255,12 +255,12 @@ function BriefingPage() {
             <li>수급 관련 정보는 공개 가능한 집계 기준으로 제공하고, 세부 민감정보는 내부 관제에서 관리합니다.</li>
           </ol>
         </article>
-        <aside className="featured-panel">
-          <div className="featured-panel-head">
+        <aside className="featured__panel">
+          <div className="featured__panel-head">
             <h3>제공 데이터</h3>
             <p>브리핑에 포함될 수 있는 공개형 데이터 후보입니다.</p>
           </div>
-          <ul className="featured-list compact">
+          <ul className="featured__list compact">
             <li><BarChart3 size={16} /> 국제유가·환율 요약</li>
             <li><Fuel size={16} /> 국내 유종별 가격</li>
             <li><FileText size={16} /> 정책·공지 요약</li>
@@ -268,12 +268,12 @@ function BriefingPage() {
           </ul>
         </aside>
       </section>
-      <section className="featured-panel">
-        <div className="featured-panel-head">
+      <section className="featured__panel">
+        <div className="featured__panel-head">
           <h3>통계 상세 후보</h3>
           <p>대국민 공개 가능 범위가 확정된 항목부터 순차 적용합니다.</p>
         </div>
-        <table className="featured-table">
+        <table className="featured__table">
           <thead><tr><th>구분</th><th>요약 내용</th><th>공개 상태</th></tr></thead>
           <tbody>{briefingRows.map((row) => <tr key={row[0]}>{row.map((cell) => <td key={cell}>{cell}</td>)}</tr>)}</tbody>
         </table>

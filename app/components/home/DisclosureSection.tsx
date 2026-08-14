@@ -12,10 +12,10 @@ export function DisclosureSection() {
         </div>
         <RouteLink to="/disclosure/open/list" className="section-link">정보공개 전체보기 <ArrowRight size={15} /></RouteLink>
       </div>
-      <div className="disclosure-grid">
+      <div className="disclosure__grid">
         {disclosureCards.map((card) => (
-          <article className="disclosure-card" key={card.title}>
-            <span className="disclosure-mark" aria-hidden="true"><Landmark size={19} /></span>
+          <article className="disclosure__card" key={card.title}>
+            <span className="disclosure__mark" aria-hidden="true"><Landmark size={19} /></span>
             <h3>{card.title}</h3>
             <p>{card.description}</p>
             <ul>

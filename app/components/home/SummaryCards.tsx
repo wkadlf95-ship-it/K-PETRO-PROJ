@@ -13,7 +13,7 @@ const trendIcons = { up: TrendingUp, down: TrendingDown, flat: Minus };
 
 export function SummaryCards() {
   return (
-    <section className="summary-section" aria-labelledby="summary-title">
+    <section className="summary" aria-labelledby="summary-title">
       <div className="portal-container home-section">
         <div className="section-heading">
           <div>
@@ -22,26 +22,26 @@ export function SummaryCards() {
           </div>
           <p>공개 가능한 주요 지표를 분야별로 요약해 제공합니다.</p>
         </div>
-        <div className="summary-grid">
+        <div className="summary__grid">
           {summaryCards.map((card) => {
             const Icon = cardIcons[card.title] ?? Fuel;
             const TrendIcon = trendIcons[card.trend.direction];
             return (
               <RouteLink to={card.path} className="summary-card" key={card.title}>
-                <div className="summary-card-top">
-                  <span className={`summary-icon ${card.tone}`}><Icon size={20} strokeWidth={1.9} /></span>
+                <div className="summary-card__top">
+                  <span className={`summary-card__icon summary-card__icon--${card.tone}`}><Icon size={20} strokeWidth={1.9} /></span>
                   <strong>{card.title}</strong>
-                  <ArrowRight size={16} className="summary-arrow" aria-hidden="true" />
+                  <ArrowRight size={16} className="summary-card__arrow" aria-hidden="true" />
                 </div>
-                <p className="summary-desc">{card.description}</p>
-                <div className="summary-value">
+                <p className="summary-card__desc">{card.description}</p>
+                <div className="summary-card__value">
                   <em>{card.subValue}</em>
                   <strong>{card.value}</strong>
-                  <span className={`summary-trend is-${card.trend.direction}`}>
+                  <span className={`summary-card__trend is-${card.trend.direction}`}>
                     <TrendIcon size={13} aria-hidden="true" /> {card.trend.text}
                   </span>
                 </div>
-                <dl className="summary-metrics">
+                <dl className="summary-card__metrics">
                   {card.metrics.map((metric) => (
                     <div key={metric.label}>
                       <dt>{metric.label}</dt>

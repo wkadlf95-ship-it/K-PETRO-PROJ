@@ -45,7 +45,7 @@ export function InstitutionPage({ page }: { page: ResolvedPage }) {
         </div>
       </div>
 
-      <div className="sub-tabs-wrap">
+      <div className="sub-tabs__wrap">
         <nav className="portal-container sub-tabs" aria-label={`${mid.label} 하위 메뉴`}>
           {mid.children?.map((item) => (
             item.kind === "external" && item.href
@@ -55,7 +55,7 @@ export function InstitutionPage({ page }: { page: ResolvedPage }) {
         </nav>
       </div>
 
-      <div className="portal-container institution-layout">
+      <div className="portal-container institution__layout">
         <aside className="lnb" aria-label={`${top.label} 메뉴`}>
           <h2>{top.label}</h2>
           <ul>
@@ -69,10 +69,10 @@ export function InstitutionPage({ page }: { page: ResolvedPage }) {
           </ul>
         </aside>
 
-        <div className="institution-body">
-          <div className="institution-head">
+        <div className="institution__body">
+          <div className="institution__head">
             <h2>{leaf.label}</h2>
-            <div className="institution-tools">
+            <div className="institution__tools">
               <button type="button" onClick={() => window.print()} aria-label="인쇄"><Printer size={15} /></button>
               <button type="button" aria-label="공유"><Share2 size={15} /></button>
             </div>

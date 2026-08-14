@@ -26,7 +26,7 @@ const icons: Record<string, LucideIcon> = {
 
 export function QuickServiceGrid() {
   return (
-    <section className="quick-service-wrap" aria-labelledby="quick-service-title">
+    <section className="quick-service" aria-labelledby="quick-service-title">
       <div className="portal-container home-section">
         <div className="section-heading">
           <div>
@@ -35,12 +35,12 @@ export function QuickServiceGrid() {
           </div>
           <p>자주 찾는 공개정보 서비스로 바로 이동합니다.</p>
         </div>
-        <div className="quick-service-grid">
+        <div className="quick-service__grid">
           {quickServices.map((service) => {
             const Icon = icons[service.icon] ?? FileSearch;
             return (
-              <RouteLink to={service.path} className="quick-service-card" key={service.title}>
-                <span className={`quick-service-icon ${service.tone}`}><Icon size={22} strokeWidth={1.8} /></span>
+              <RouteLink to={service.path} className="quick-service__card" key={service.title}>
+                <span className={`quick-service__icon quick-service__icon--${service.tone}`}><Icon size={22} strokeWidth={1.8} /></span>
                 <div>
                   <h3>{service.title}</h3>
                   <p>{service.description}</p>

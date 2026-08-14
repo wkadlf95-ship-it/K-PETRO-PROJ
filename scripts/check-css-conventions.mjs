@@ -76,7 +76,29 @@ if (!readFileSync(join(APP, 'App.tsx'), 'utf8').includes('skip-link')) {
   fail(join(APP, 'App.tsx'), '건너뛰기 링크(.skip-link)가 없음');
 }
 
-/* 6. 로드 순서 (뒤 파일이 앞을 덮으므로 순서가 규약이다) */
+/* 6. BEM 표기: 블록은 단어-단어, 자식은 __, 변형은 --, 상태는 is- 로 시작.
+      하이픈 3단 이상인데 __/-- 가 없으면 자식을 하이픈으로 붙인 것으로 본다.
+      아래는 여러 단어로 이루어진 정당한 블록명이라 예외로 둔다. */
+const MULTIWORD_BLOCKS = new Set([
+  'all-menu-card', 'all-menu-featured', 'all-menu-section-title',
+  'chart-grid-line', 'geo-data-view', 'service-menu-grid',
+]);
+for (const file of cssFiles) {
+  if (file.endsWith('tokens.css')) continue;
+  const src = readFileSync(file, 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
+  const seen = new Set();
+  for (const m of src.matchAll(/\.([a-z][a-z0-9-]+)/g)) {
+    const cls = m[1];
+    if (seen.has(cls) || cls.includes('__') || cls.includes('--')) continue;
+    if (cls.startsWith('is-') || cls.startsWith('col-') || MULTIWORD_BLOCKS.has(cls)) continue;
+    if (cls.split('-').length >= 3) {
+      seen.add(cls);
+      fail(file, `.${cls} — 자식은 __, 변형은 -- 로 표기할 것 (블록이면 허용목록에 추가)`);
+    }
+  }
+}
+
+/* 7. 로드 순서 (뒤 파일이 앞을 덮으므로 순서가 규약이다) */
 const EXPECTED = ['fonts.css', 'tokens.css', 'base.css', 'layout.css', 'components.css', 'pages/home.css', 'pages/institution.css', 'pages/sitemap.css'];
 const imported = [...readFileSync(join(STYLES, 'index.css'), 'utf8').matchAll(/@import\s+'\.\/([^']+)'/g)].map((m) => m[1]);
 if (imported.join(',') !== EXPECTED.join(',')) {

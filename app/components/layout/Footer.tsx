@@ -5,8 +5,8 @@ import { RouteLink } from "../common/RouteLink";
 
 function FooterPolicyLinks() {
   return (
-    <div className="footer-top">
-      <div className="portal-container footer-links">
+    <div className="footer__top">
+      <div className="portal-container footer__links">
         <RouteLink to="/about/ceo/greeting">기관소개</RouteLink>
         <a href="#privacy" className="strong">개인정보처리방침</a>
         <a href="#terms">이용약관</a>
@@ -20,7 +20,7 @@ function FooterPolicyLinks() {
 
 function FooterSitemap() {
   return (
-    <div className="portal-container footer-sitemap">
+    <div className="portal-container footer__sitemap">
       {footerSitemapColumns.map((column) => (
         <div key={column.title}>
           <strong>{column.title}</strong>
@@ -31,9 +31,9 @@ function FooterSitemap() {
           </ul>
         </div>
       ))}
-      <div className="footer-contact">
+      <div className="footer__contact">
         <strong><Headset size={16} /> 고객센터</strong>
-        <p className="footer-tel">1588-5166</p>
+        <p className="footer__tel">1588-5166</p>
         <p>평일 09:00–18:00 (점심 12:00–13:00)</p>
         <p>주말·공휴일 휴무</p>
       </div>
@@ -46,7 +46,7 @@ export function Footer() {
     <footer className="site-footer">
       <FooterPolicyLinks />
       <FooterSitemap />
-      <div className="portal-container footer-body">
+      <div className="portal-container footer__body">
         <div>
           <BrandLogo compact />
           <p>충청북도 음성군 맹동면 두레로 51 한국석유관리원</p>

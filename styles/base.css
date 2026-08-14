@@ -42,7 +42,7 @@ input, select, textarea {
 }
 
 /* 어두운 면 위에서는 흰 링으로 뒤집는다. */
-:where(.hero-card, .site-footer, .personal-wrap, .briefing-card, .chatbot-head)
+:where(.hero__card, .site-footer, .personal, .briefing-card, .chatbot__head)
   :where(a, button, input):focus-visible {
   outline-color: var(--tx-inv);
 }

@@ -18,13 +18,13 @@ const utilityLinks = [
 export function UtilityBar() {
   return (
     <div className="utility-bar">
-      <div className="portal-container utility-inner">
-        <nav aria-label="바로가기" className="institution-nav">
+      <div className="portal-container utility__inner">
+        <nav aria-label="바로가기" className="utility__nav">
           {shortcuts.map((item) => (
             <RouteLink key={item.label} to={item.path}>{item.label}</RouteLink>
           ))}
         </nav>
-        <div className="utility-actions">
+        <div className="utility__actions">
           {utilityLinks.map((item) => (
             <RouteLink key={item.label} to={item.path}>{item.label}</RouteLink>
           ))}

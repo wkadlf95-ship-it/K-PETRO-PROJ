@@ -34,7 +34,7 @@ export function PriceTrendChart({ data = priceTrend }: { data?: PriceTrendData }
   const max = Math.max(...all) + 8;
 
   return (
-    <div className="chart-frame">
+    <div className="chart__frame">
       <svg
         viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
         role="img"
@@ -58,7 +58,7 @@ export function PriceTrendChart({ data = priceTrend }: { data?: PriceTrendData }
         })}
       </svg>
 
-      <div className="chart-axis">
+      <div className="chart__axis">
         {data.labels.map((label) => <span key={label}>{label}</span>)}
       </div>
 
@@ -73,13 +73,13 @@ export function PriceTrendChart({ data = priceTrend }: { data?: PriceTrendData }
             <li key={`${series.name}-summary`}>
               <span>{series.name}</span>
               <strong>{latest.toLocaleString()}{data.unit}</strong>
-              <em className={`chart-delta ${deltaClass}`}>전일 대비 {deltaText}{data.unit}</em>
+              <em className={`chart__delta ${deltaClass}`}>전일 대비 {deltaText}{data.unit}</em>
             </li>
           );
         })}
       </ul>
 
-      <ul className="chart-legend">
+      <ul className="chart__legend">
         {data.series.map((series) => (
           <li key={series.name}>
             <i style={{ background: series.color }} aria-hidden="true" />

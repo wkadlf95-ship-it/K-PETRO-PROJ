@@ -15,7 +15,7 @@ export function DistributionDonut() {
   });
 
   return (
-    <div className="donut-frame">
+    <div className="donut__frame">
       <svg viewBox="0 0 140 140" role="img" aria-label="유종별 유통량 비중">
         <g transform="rotate(-90 70 70)">
           <circle cx={70} cy={70} r={RADIUS} fill="none" stroke="var(--line)" strokeWidth={STROKE} />
@@ -33,11 +33,11 @@ export function DistributionDonut() {
             />
           ))}
         </g>
-        <text x={70} y={66} className="donut-value">{distributionTotal.value}</text>
-        <text x={70} y={82} className="donut-unit">{distributionTotal.unit}</text>
+        <text x={70} y={66} className="donut__value">{distributionTotal.value}</text>
+        <text x={70} y={82} className="donut__unit">{distributionTotal.unit}</text>
       </svg>
 
-      <ul className="donut-legend">
+      <ul className="donut__legend">
         {distributionShare.map((item) => (
           <li key={item.name}>
             <i style={{ background: item.color }} aria-hidden="true" />

@@ -19,12 +19,12 @@ export function SitemapPage() {
       </div>
 
       <div className="portal-container sub-content">
-        <div className="sitemap-grid">
+        <div className="sitemap__grid">
           {siteTree.map((top) => (
-            <section className="sitemap-block" key={top.slug}>
+            <section className="sitemap__block" key={top.slug}>
               <h2>{top.label}</h2>
               {top.children?.map((mid) => (
-                <div className="sitemap-group" key={mid.slug}>
+                <div className="sitemap__group" key={mid.slug}>
                   <strong>{mid.label}</strong>
                   <ul>
                     {mid.children?.map((leaf) => (
